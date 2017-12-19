@@ -9,6 +9,7 @@ HOST: http://192.168.1.138/
     + Folders API 
         + 增加是否可删除字段
         + 增加关联关系相关API
+        + 增加include语义
 
 + 2017年12月14日
     + Folders API 
@@ -26,6 +27,8 @@ HOST: http://192.168.1.138/
     + 查询列表时, 系统强制过滤参数, 不需要手工指定
         + filter[creator]={current user}
         + filter[enabled]=1
+    + [GET] 查询列表时增加以下参数以判断目录下是否包含特定topic ID
+        + include={topicId-1[,topicId-2]}
 
 + Field
     + id (long) - 目录ID
@@ -34,6 +37,8 @@ HOST: http://192.168.1.138/
     + amount (int) - 当前文件夹文件数
     + capacity (int) - 文件夹总容量
     + cancellable (int) - 1:可删除, 0:不能删除
+    + checked (boolean) - true:包含, false:不包含
+        + e.g : ?include=1,2,3
 
 + Meta
     + number (int) - 当前页
@@ -123,7 +128,8 @@ HOST: http://192.168.1.138/
                     "amount": 0,
                     "capacity": 6,
                     "displayOrder": 0,
-                    "cancellable": 0
+                    "cancellable": 0,
+                    "checked": true
                 },
                 {
                     "id": 2,
@@ -138,7 +144,8 @@ HOST: http://192.168.1.138/
                     "amount": 0,
                     "capacity": 6,
                     "displayOrder": 0,
-                    "cancellable": 1
+                    "cancellable": 1,
+                    "checked": false
                 },
                 {
                     "id": 3,
@@ -153,7 +160,8 @@ HOST: http://192.168.1.138/
                     "amount": 0,
                     "capacity": 6,
                     "displayOrder": 0,
-                    "cancellable": 1
+                    "cancellable": 1,
+                    "checked": false
                 }
             ]
         }
