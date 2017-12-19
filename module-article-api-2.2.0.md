@@ -216,6 +216,8 @@ HOST: http://192.168.1.138/
 + Data
     + id (long) - 主题资源唯一标识符
     + attributes (object, nullable) - 资源属性
+    + attributes.topicId (long) - 一次添加单个
+    + attributes.topicIds (array) - 一次添加多个
 
 + Parameters
     + userId (long) - 用户ID
@@ -223,8 +225,9 @@ HOST: http://192.168.1.138/
 ### 增加关联 [POST]
 
 + e.g : 下面请求为当前用户
-    + 将ID=101, 102的Topics添加到ID=1的Folders中, 且
+    + 将ID=101的Topics添加到ID=1的Folders中, 且
     + 将ID=201, 202的Topics添加到ID=2的Folders中
+    + topicId与topicIds必须选择一个
 
 + Request (application/json)
 
@@ -236,10 +239,7 @@ HOST: http://192.168.1.138/
                 {
                     "id": "1",
                     "attributes": {
-                        "topicIds": [
-                            101,
-                            102
-                        ]
+                        "topicId": 101
                     }
                 },
                 {
