@@ -5,8 +5,14 @@ HOST: http://192.168.1.138/
 
 2.2.0 mifan API 
 
++ 2017年12月19日
+    + Folders API 
+        + 增加是否可删除字段
+        + 增加关联关系相关API
+
 + 2017年12月14日
-    + 文件夹API增加统计数
+    + Folders API 
+        + 增加统计数
 
 ## (POST|GET) 目录文件 [/article/folders]
 
@@ -27,6 +33,7 @@ HOST: http://192.168.1.138/
     + folderType (int) - 此处固定为1, 1:产品比较目录类型
     + amount (int) - 当前文件夹文件数
     + capacity (int) - 文件夹总容量
+    + cancellable (int) - 1:可删除, 0:不能删除
 
 + Meta
     + number (int) - 当前页
@@ -115,7 +122,8 @@ HOST: http://192.168.1.138/
                     "folderName": "吉他相关",
                     "amount": 0,
                     "capacity": 6,
-                    "displayOrder": 0
+                    "displayOrder": 0,
+                    "cancellable": 0
                 },
                 {
                     "id": 2,
@@ -129,7 +137,8 @@ HOST: http://192.168.1.138/
                     "folderName": "扩声相关",
                     "amount": 0,
                     "capacity": 6,
-                    "displayOrder": 0
+                    "displayOrder": 0,
+                    "cancellable": 1
                 },
                 {
                     "id": 3,
@@ -143,7 +152,8 @@ HOST: http://192.168.1.138/
                     "folderName": "专业相关",
                     "amount": 0,
                     "capacity": 6,
-                    "displayOrder": 0
+                    "displayOrder": 0,
+                    "cancellable": 1
                 }
             ]
         }
@@ -193,6 +203,118 @@ HOST: http://192.168.1.138/
 
 + Response 204 (application/json)
 
+## (POST|DELETE)用户与文件关联关系(比较) [/users/{userId}/relationships/folders]
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] 用户只能操作自己的资源
+    + [OPTIONAL] 不写meta的话:/users/{userId}/relationships/folders/compare
+    
++ Meta
+    + relationships (string) - compare:表明这是_用户_与_文件_资源多对多关系中的_主题比较关联_
+    
++ Data
+    + id (long) - 主题资源唯一标识符
+    + attributes (object, nullable) - 资源属性
+
++ Parameters
+    + userId (long) - 用户ID
+
+### 增加关联 [POST]
+
++ e.g : 下面请求为当前用户
+    + 将ID=101, 102的Topics添加到ID=1的Folders中, 且
+    + 将ID=201, 202的Topics添加到ID=2的Folders中
+
++ Request (application/json)
+
+        {
+            "meta": {
+                "relationships": "compare"
+            },
+            "data": [
+                {
+                    "id": "1",
+                    "attributes": {
+                        "topicIds": [
+                            101,
+                            102
+                        ]
+                    }
+                },
+                {
+                    "id": "2",
+                    "attributes": {
+                        "topicIds": [
+                            201,
+                            202
+                        ]
+                    }
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
++ Response 202 (application/json)
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "status": "400",
+                    "code": "应用程序code编码",
+                    "title": "Bad Request",
+                    "detail": "错误信息描述"
+                }
+            ]
+        }
+
+### 删除关联, 清空目录下的主题 [DELETE]
+
++ e.g : 下面请求为当前用户
+    + 清空ID=1的Folders中的所有主题
+    + 清空ID=2的Folders中的所有主题
+    + 删除单个主题请参考 /article/usersFoldersCompare/{id} API的[DELETE]方法
+
++ Request (application/json)
+
+        {
+            "meta": {
+                "relationships": "compare"
+            },
+            "data": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
++ Response 202 (application/json)
+
++ Response 204 (application/json)
+
++ Response 400 (application/json)
+
+        {
+            "errors": [
+                {
+                    "status": "400",
+                    "code": "应用程序code编码",
+                    "title": "Bad Request",
+                    "detail": "错误信息描述"
+                }
+            ]
+        }
+        
 ## (POST|GET) 比较目录下的主题 [/article/usersFoldersCompare]
 
 + Description
@@ -226,7 +348,7 @@ HOST: http://192.168.1.138/
     + first (boolean) - 是否是第一页
     + totalElements - 总记录数
 
-### 比较目录下新增主题 [POST]
+### <del>比较目录下新增主题 [POST]</del>
 
 + Request (application/json)
 
@@ -354,7 +476,7 @@ HOST: http://192.168.1.138/
 + Parameters
     + id (long) - ID
 
-### 查询比较目录下的主题详情 [GET]
+### <del>查询比较目录下的主题详情 [GET]</del>
 
 + Response 200 (application/json)
 
@@ -370,11 +492,11 @@ HOST: http://192.168.1.138/
             }
         }
 
-### 删除比较目录下的主题 [DELETE]
+### 删除比较目录下的主题（1条1条删除） [DELETE]
 
 + Response 204 (application/json)
 
-### 修改比较目录下的主题 [PATCH]
+### <del>修改比较目录下的主题 [PATCH]</del>
 
 + Request (application/json)
 
