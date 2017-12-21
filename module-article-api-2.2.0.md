@@ -5,6 +5,9 @@ HOST: http://192.168.1.138/
 
 2.2.0 mifan API 
 
++ 2017年12月21日
+    + 增加比较目录/文件夹中的产品API
+
 + 2017年12月19日
     + Folders API 
         + 增加是否可删除字段
@@ -14,6 +17,12 @@ HOST: http://192.168.1.138/
 + 2017年12月14日
     + Folders API 
         + 增加统计数
+        
+## (GET) 比较目录下的产品 [/article/folders/{id}/compare]
+
++ Description
+    + [MUST] Authticated
+    + 返回格式参考原比较API - [产品比较API](https://github.com/helldzl/web-crawler/blob/master/module-article-api.md#get-%E4%BA%A7%E5%93%81%E6%AF%94%E8%BE%83%E9%9B%86%E5%90%88-topicscompareartids)
 
 ## (POST|GET) 目录文件 [/article/folders]
 
