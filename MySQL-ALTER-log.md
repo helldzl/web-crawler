@@ -22,6 +22,7 @@ CREATE TABLE `folders` (
   `amount` int(11) NOT NULL DEFAULT '0' COMMENT '当前大小',
   `capacity` int(11) NOT NULL DEFAULT '6' COMMENT '最大容量',
   `display_order` int(11) NOT NULL DEFAULT '0',
+  `cancellable` tinyint(1) NOT NULL DEFAULT '1',
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
   `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
