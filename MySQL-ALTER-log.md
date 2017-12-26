@@ -1,6 +1,6 @@
 # 数据库修改记录
 
-![米饭星]http://cdn.mifanxing.com/mifan/img/favicon.ico
+![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 ---
 
