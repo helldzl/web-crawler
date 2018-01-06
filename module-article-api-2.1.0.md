@@ -1478,6 +1478,12 @@ HOST: http://192.168.1.138/
 + Response 204 (application/json)
 
 
++ 2017年11月7日
+    + API初始化
++ 2018年1月6日
+    + 创建任务的时候添加指定翻译人，修改任务时添加修改翻译人
+    + 查询结果中添加了翻译人帐号、审核人帐号、修改人帐号、创建人帐号
+
 ## 翻译任务
 
 + Data
@@ -1485,8 +1491,8 @@ HOST: http://192.168.1.138/
     + postId (Long) - 翻译标识
     + state (int) - 任务状态，1：待领取，2：未提交，3：待审核，4：审核中，5：审核失败，6：审核成功，7：已支付
     + wordsNum (int) - 单词数
-    + wordsNumCn (int) - 中文字数
-    + bonus (BigDecimal) - 金额
+    + wordsNumCn (int) - 中文字数
+    + bonus (BigDecimal) - 金额
     + translator (Long) - 翻译人
     + auditor (Long) - 审核人
     + auditOpinion (String) - 审核意见
@@ -1500,6 +1506,10 @@ HOST: http://192.168.1.138/
     + content (String) - 内容
     + title (String) - 标题
     + topicType (String) - 文章类型
+    + translatorAccount (String) - 翻译人员帐号
+    + auditorAccount (String) - 审核人员帐号
+    + modifierAccount (String) - 修改人帐号
+    + creatorAccount (String) - 创建人帐号
 
 ## 审核人员接口
 ### 开始审核/暂存审核/提交审核结果 [PATCH] /article/translateTasks/auditors/{id}
@@ -1583,12 +1593,24 @@ HOST: http://192.168.1.138/
           },
           "data": [
             {
+              "id": 4,
+              "topicId": 619766,
+              "state": 4,
+              "wordsNum": 1000,
+              "translator": 2425,
+              "title": "£1,500 Spector bass stolen from Rimmers Music Blackburn",
+              "topicType": "新闻",
+              "translatorAccount": "18211021070"
+            },
+            {
               "id": 1,
               "topicId": 1,
               "state": 4,
+              "wordsNum": 10,
               "translator": 1031,
               "title": "Virus TI2 Desktop",
-              "topicType": "产品"
+              "topicType": "产品",
+              "translatorAccount": "18611194890"
             }
           ]
         }
@@ -1694,7 +1716,9 @@ HOST: http://192.168.1.138/
               "postTypeValue": "精翻"
             },
             "title": "Virus TI2 Desktop",
-            "topicType": "产品"
+            "topicType": "产品",
+            "translatorAccount": "18611194890",
+            "auditorAccount": "18611194890"
           }
         }
 
@@ -1894,7 +1918,8 @@ HOST: http://192.168.1.138/
               "postTypeValue": "精翻"
             },
             "title": "Virus TI2 Desktop",
-            "topicType": "产品"
+            "topicType": "产品",
+            "translatorAccount": "18611194890"
           }
         }
 ## 管理员接口
@@ -1907,12 +1932,14 @@ HOST: http://192.168.1.138/
     + topicId - 必填
     + wordsNum
     + bonus
+    + translatorAccount
 
 + 新增Request (application/json)
     
         {
             "data":{
                 "topicId":1,
+                "translatorAccount":"18611194890",
                 "wordsNum":1000,
                 "bonus":50
             }
@@ -1936,11 +1963,13 @@ HOST: http://192.168.1.138/
     + wordsNum
     + wordsNumCn
     + bonus
+    + translatorAccount
 
 + 修改Request (application/json)
     
         {
             "data":{
+                "translatorAccount":"18611194890",
                 "wordsNum":2000,
                 "wordsNumCn":2500,
                 "bonus":100
@@ -1998,7 +2027,11 @@ HOST: http://192.168.1.138/
               "translator": 0,
               "auditor": 0,
               "title": "Virus TI2 Desktop",
-              "topicType": "产品"
+              "topicType": "产品",
+              "translatorAccount": "18611194890",
+              "auditorAccount": "18611194890",
+              "modifierAccount": "18611194890",
+              "creatorAccount": "18611194890"
             },
             {
               "id": 2,
@@ -2015,7 +2048,10 @@ HOST: http://192.168.1.138/
               "translator": 0,
               "auditor": 0,
               "title": "Virus TI2 Keyboard",
-              "topicType": "产品"
+              "topicType": "产品",
+              "translatorAccount": "18611194890",
+              "modifierAccount": "18611194890",
+              "creatorAccount": "18611194890"
             }
           ]
         }
@@ -2115,7 +2151,11 @@ HOST: http://192.168.1.138/
               "postTypeValue": "精翻"
             },
             "title": "Virus TI2 Desktop",
-            "topicType": "产品"
+            "topicType": "产品",
+            "translatorAccount": "18611194890",
+            "auditorAccount": "18611194890",
+            "modifierAccount": "18611194890",
+            "creatorAccount": "18611194890"
           }
         }
 
