@@ -454,7 +454,9 @@ HOST: http://polls.apiblueprint.org/
     + eventCode (String) - 自定义编码，定义在event_dic中
     + urlLog (String) - 请求的url
     + methodType (String) - 请求类型
-    + params (json) - 参数，json格式的字符串
+    + version (String) - 版本号
+    + pcMobile (int) - pc还是移动端 1：pc，2：移动端
+    + params (json) - 参数，json格式的字符串
     + isSuccess (int) - 是否成功
 
 ### 增加日志 [POST]
@@ -465,7 +467,9 @@ HOST: http://polls.apiblueprint.org/
     + eventCode (String) - 必填
     + methodType (String) - 非必填
     + params (String) - 非必填
-    + isSuccess (String) - 非必填
+    + version (String) - 非必填
+    + pcMobile (int) - 非必填
+    + isSuccess (String) - 非必填
 
     + Request (application/json)
 
@@ -510,14 +514,3 @@ HOST: http://polls.apiblueprint.org/
                 }
             ]
         }
-    
-### 埋点位置
-    
-   + 进入、关闭产品、文章、评测、视频详情的操作
-   + 进入、关闭图库详情操作
-   + 进入、关闭品牌详情的操作
-   + 进入、关闭分类详情的操作
-   + 频道点击、收藏、取消收藏操作
-   + 不喜欢操作
-   + 刷新频道列表操作 
-   + 搜索关键字
