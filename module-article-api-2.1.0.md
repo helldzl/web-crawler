@@ -1506,6 +1506,7 @@ HOST: http://192.168.1.138/
     + content (String) - 内容
     + title (String) - 标题
     + topicType (String) - 文章类型
+    + content (String) - 文章内容
     + translatorAccount (String) - 翻译人员帐号
     + auditorAccount (String) - 审核人员帐号
     + modifierAccount (String) - 修改人帐号
@@ -1933,6 +1934,9 @@ HOST: http://192.168.1.138/
     + wordsNum
     + bonus
     + translatorAccount
+    + post
+    + post.id - 如果post不为空，则必填
+    + post.content - 如果post不为空，则必填
 
 + 新增Request (application/json)
     
@@ -1941,7 +1945,11 @@ HOST: http://192.168.1.138/
                 "topicId":1,
                 "translatorAccount":"18611194890",
                 "wordsNum":1000,
-                "bonus":50
+                "bonus":50,
+                "post":{
+                    "id":5,
+                    "content":"内容分段测试 "
+                }
             }
         }
 + Response 201 (application/json)
