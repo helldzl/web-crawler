@@ -16,8 +16,8 @@
 ```sql
 ALTER TABLE `mifan_support`.`event_log`
 ADD COLUMN `enabled`  tinyint(1) UNSIGNED NOT NULL DEFAULT 1 AFTER `ip`;
-ADD COLUMN `version`  vachar(50) UNSIGNED NOT NULL AFTER `params`;
-ADD COLUMN `pc_mobile`  tinyint(1) UNSIGNED NOT NULL AFTER `version`;
+ADD COLUMN `version`  vachar(50) UNSIGNED AFTER `params`;
+ADD COLUMN `pc_mobile`  tinyint(1) UNSIGNED AFTER `version`;
 ```
 
 ### 2017年12月14日
