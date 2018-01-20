@@ -1483,6 +1483,9 @@ HOST: http://192.168.1.138/
 + 2018年1月6日
     + 创建任务的时候添加指定翻译人，修改任务时添加修改翻译人
     + 查询结果中添加了翻译人帐号、审核人帐号、修改人帐号、创建人帐号
++ 2018年1月20日
+    + 添加tags
+    + 任务发起的时候，允许任务发起人给content添加段落标记
 
 ## 翻译任务
 
@@ -1506,6 +1509,8 @@ HOST: http://192.168.1.138/
     + content (String) - 内容
     + title (String) - 标题
     + topicType (String) - 文章类型
+    + content (String) - 文章内容
+    + tags (String[]) - 标签
     + translatorAccount (String) - 翻译人员帐号
     + auditorAccount (String) - 审核人员帐号
     + modifierAccount (String) - 修改人帐号
@@ -1551,7 +1556,10 @@ HOST: http://192.168.1.138/
                                     "_name":"翻译的很属性2",
                                     "_value":"翻译的很属性2的值"
                                 }
-                            ]
+                            ],
+                    "tags":[
+                            "北美","无码"
+                        ]
                 }
             }
         }
@@ -1762,7 +1770,10 @@ HOST: http://192.168.1.138/
                                     "_name":"属性2",
                                     "_value":"属性2的值"
                                 }
-                            ]
+                            ],
+                    "tags":[
+                            "北美","无码"
+                        ]
                 }
             }
         }
@@ -1933,6 +1944,9 @@ HOST: http://192.168.1.138/
     + wordsNum
     + bonus
     + translatorAccount
+    + post
+    + post.id - 如果post不为空，则必填
+    + post.content - 如果post不为空，则必填
 
 + 新增Request (application/json)
     
@@ -1941,7 +1955,11 @@ HOST: http://192.168.1.138/
                 "topicId":1,
                 "translatorAccount":"18611194890",
                 "wordsNum":1000,
-                "bonus":50
+                "bonus":50,
+                "post":{
+                    "id":5,
+                    "content":"内容分段测试 "
+                }
             }
         }
 + Response 201 (application/json)
