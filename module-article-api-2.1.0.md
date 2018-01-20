@@ -1533,6 +1533,7 @@ HOST: http://192.168.1.138/
     + posts.title - 必填
     + posts.description
     + posts.content
+    + posts.tags
 
 + 开始审核Request (application/json)
 
@@ -1747,6 +1748,7 @@ HOST: http://192.168.1.138/
     + post.title - 必填
     + post.description
     + post.content
+    + posts.tags
 
 + 领取/审核失败后继续翻译Request (application/json)
 
