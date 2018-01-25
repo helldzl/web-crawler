@@ -1,3 +1,7 @@
+# 用户微服务
+
+{version} = "", 即用户微服务因为已经单独拆分出来了，暂时版本号为空；
+
 |	原 API	|	新 API
 |	 -----	|	 -----
 |	/oauth/token/refresh	|	{version}/user/oauth/token/refresh
@@ -43,3 +47,31 @@
 |	/zhangyongwei	|	{version}/user/zhangyongwei
 |	/oauth/weChat/bind	|	{version}/user/oauth/weChat/bind
 |	/isFollow	|	{version}/user/isFollow
+
+# 米饭微服务（支持微服务，主题微服务，抽奖微服务）
+
+{version} = /v1
+
+## 支持微服务 /support
+
+|	原 API	|	新 API	|
+|	 -----	|	 -----	|
+|	/commentConfs/{id}	|	{version}/support/commentConfs/{id}	|
+|	/commentConfs	|	{version}/support/commentConfs	|
+|	/comments/{id}	|	{version}/support/comments/{id}	|
+|	/comments	|	{version}/support/comments	|
+|	/comments/theme	|	{version}/support/comments/theme	|
+|	/comments/hots	|	{version}/support/comments/hots	|
+|	/eventLogs	|	{version}/support/eventLogs	|
+|	/eventLogs/{id}	|	{version}/support/eventLogs/{id}	|
+|	/support/eventDics/{id}	|	{version}/support/eventDics/{id}	|
+|	/support/eventDics	|	{version}/support/eventDics	|
+|	/praises	|	{version}/support/praises	|
+|	/tags/{id}	|	{version}/support/tags/{id}	|
+|	/tags	|	{version}/support/tags	|
+|	/article/ranks	|	{version}/support/ranks	|
+|	/article/ranks/{key}	|	{version}/support/ranks/{key}	|
+|	/article/ranks/scores	|	{version}/support/ranks/scores	|
+|	/api/upload	|	{version}/support/upload	|
+
+
