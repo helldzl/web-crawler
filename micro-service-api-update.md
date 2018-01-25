@@ -2,7 +2,7 @@
 
 {version}可能会根据项目版本发生变化，请调用方封装一下变化。
 
-# 用户微服务
+# 用户微服务 /user
 
 {version} = "", 即用户微服务因为已经单独拆分出来了，暂时版本号为空；
 
@@ -78,7 +78,7 @@
 |	/article/ranks/scores	|	{version}/support/ranks/scores	|
 |	/api/upload	|	{version}/support/upload	|
 
-## 主题微服务 /topic
+## 主题微服务 /article
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
