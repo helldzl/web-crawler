@@ -1,3 +1,7 @@
+# URL重构
+
+{version}可能会根据项目版本发生变化，请调用方封装一下变化。
+
 # 用户微服务
 
 {version} = "", 即用户微服务因为已经单独拆分出来了，暂时版本号为空；
@@ -132,7 +136,7 @@
 |	/users/{id}/relationships/{relationship:folders}	|	{version}/article/users/{id}/relationships/{relationship:folders}	|
 |	/article/usersFoldersCompare/{id}	|	{version}/article/usersFoldersCompare/{id}	|
 |	/article/usersFoldersCompare	|	{version}/article/usersFoldersCompare	|
-|	/users/{id}/relationships/{relationship:topics}/{sub:hide|like|report|favorite}	|	{version}/article/users/{id}/relationships/{relationship:topics}/{sub:hide|like|report|favorite}	|
+|	/users/{id}/relationships/{relationship:topics}/{sub:hide|like|report|favorite}	|	{version}/article/users/{id}/relationships/{relationship:topics}/{sub:hide like report favorite}	|
 |	/users/{id}/relationships/{relationship:topics}	|	{version}/article/users/{id}/relationships/{relationship:topics}	|
 |	/users/relationships/topics/report/{id}	|	{version}/article/users/relationships/topics/report/{id}	|
 |	/users/relationships/topics/report	|	{version}/article/users/relationships/topics/report	|
