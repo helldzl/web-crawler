@@ -1,43 +1,5 @@
-/oauth/token/refresh	|	{version}/user/oauth/token/refresh	|
-/oauth/check.jpg	|	{version}/user/oauth/check.jpg	|
-/oauth/token	|	{version}/user/oauth/token	|
-/oauth/phone/bind	|	{version}/user/oauth/phone/bind	|
-/oauth/phone	|	{version}/user/oauth/phone	|
-/oauth/logout	|	{version}/user/oauth/logout	|
-/user/authorities/roles/{roleId}	|	{version}/user/authorities/roles/{roleId}	|
-/user/authorities/{id}	|	{version}/user/authorities/{id}	|
-/user/authorities	|	{version}/user/authorities	|
-/user/groups/{groupId}/roles	|	{version}/user/groups/{groupId}/roles	|
-/user/groups/{id}	|	{version}/user/groups/{id}	|
-/user/groups	|	{version}/user/groups	|
-/user/groups/sites/{siteId}/users/{userId}	|	{version}/user/groups/sites/{siteId}/users/{userId}	|
-/user/roles/{roleId}/authorities	|	{version}/user/roles/{roleId}/authorities	|
-/user/roles/sites/{siteId}/users/{userId}	|	{version}/user/roles/sites/{siteId}/users/{userId}	|
-/user/roles/{id}	|	{version}/user/roles/{id}	|
-/user/roles	|	{version}/user/roles	|
-/user/roles/groups/{groupId}	|	{version}/user/roles/groups/{groupId}	|
-/user/sites/{id}	|	{version}/user/sites/{id}	|
-/user/sites	|	{version}/user/sites	|
-/register/check.jpg	|	{version}/user/register/check.jpg	|
-/register/send_sms_code	|	{version}/user/register/send_sms_code	|
-/user/userAccounts	|	{version}/user/userAccounts	|
-/api/addresses/{id}	|	{version}/user/addresses/{id}	|
-/api/addresses	|	{version}/user/addresses	|
-/api/addresses/admin	|	{version}/user/addresses/admin	|
-/api/invitations	|	{version}/user/invitations	|
-/api/grains	|	{version}/user/grains	|
-/api/profiles/{id}	|	{version}/user/profiles/{id}	|
-/api/profiles	|	{version}/user/profiles	|
-/api/profiles/admin	|	{version}/user/profiles/admin	|
-/api/profiles/{id}/admin	|	{version}/user/profiles/{id}/admin	|
-/api/users	|	{version}/user/users	|
-/api/users/{id}	|	{version}/user/users/{id}	|
-/api/users/sites/{siteId}/users/{userId}/roles	|	{version}/user/users/sites/{siteId}/users/{userId}/roles	|
-/api/users/backpwd	|	{version}/user/users/backpwd	|
-/api/usersexist	|	{version}/user/users/exist	|
-/api/users/sites/{siteId}/users/{userId}/groups	|	{version}/user/users/sites/{siteId}/users/{userId}/groups	|
-/wechat/signature	|	{version}/user/wechat/signature	|
-/oauth/weChat	|	{version}/user/oauth/weChat	|
-/zhangyongwei	|	{version}/user/zhangyongwei	|
-/oauth/weChat/bind	|	{version}/user/oauth/weChat/bind	|
-/isFollow	|	{version}/user/isFollow	|
+| 水果        | 价格    |  数量  |
+| --------   | -----  | :----|
+| 香蕉        | $1      |   5    |
+| 苹果        | $1      |   6    |
+| 草莓        | $1      |   7    |
