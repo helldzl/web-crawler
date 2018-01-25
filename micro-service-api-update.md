@@ -74,7 +74,7 @@
 |	/article/ranks/scores	|	{version}/support/ranks/scores	|
 |	/api/upload	|	{version}/support/upload	|
 
-## 主题微服务
+## 主题微服务 /topic
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
@@ -182,4 +182,37 @@
 
 ## 抽奖微服务 /reward
 
+|	原 API	|	新 API	|
+|	 -----	|	 -----	|
+|	/reward/admin/categories/{id}	|	{version}/reward/admin/categories/{id}	|
+|	/reward/admin/categories	|	{version}/reward/admin/categories	|
+|	/reward/admin/goods/{id}	|	{version}/reward/admin/goods/{id}	|
+|	/reward/admin/goods	|	{version}/reward/admin/goods	|
+|	/reward/admin/images/{id}	|	{version}/reward/admin/images/{id}	|
+|	/reward/admin/images	|	{version}/reward/admin/images	|
+|	/reward/admin/notices/{id}	|	{version}/reward/admin/notices/{id}	|
+|	/reward/admin/notices	|	{version}/reward/admin/notices	|
+|	/reward/admin/prizes/{id}	|	{version}/reward/admin/prizes/{id}	|
+|	/reward/admin/prizes	|	{version}/reward/admin/prizes	|
+|	/reward/admin/records/{id}	|	{version}/reward/admin/records/{id}	|
+|	/reward/admin/records	|	{version}/reward/admin/records	|
+|	/reward/admin/shares/{id}	|	{version}/reward/admin/shares/{id}	|
+|	/reward/admin/shares	|	{version}/reward/admin/shares	|
+
 ## 抽奖微服务 /award
+
+|	原 API	|	新 API	|
+|	 -----	|	 -----	|
+|	/award/records/{id}	|	{version}/award/records/{id}	|
+|	/award/notices	|	{version}/award/notices	|
+|	/award/shares/{id}	|	{version}/award/shares/{id}	|
+|	/award/prizes	|	{version}/award/prizes	|
+|	/award/notices/{id}	|	{version}/award/notices/{id}	|
+|	/award/shares	|	{version}/award/shares	|
+|	/award/categorys	|	{version}/award/categorys	|
+|	/award/user/lucks	|	{version}/award/user/lucks	|
+|	/award/records	|	{version}/award/records	|
+|	/award/user/prizes	|	{version}/award/user/prizes	|
+|	/award/prizes/{id}	|	{version}/award/prizes/{id}	|
+|	/award/user/shares	|	{version}/award/user/shares	|
+
