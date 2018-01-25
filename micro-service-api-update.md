@@ -136,7 +136,7 @@
 |	/users/{id}/relationships/{relationship:folders}	|	{version}/article/users/{id}/relationships/{relationship:folders}	|
 |	/article/usersFoldersCompare/{id}	|	{version}/article/usersFoldersCompare/{id}	|
 |	/article/usersFoldersCompare	|	{version}/article/usersFoldersCompare	|
-|	/users/{id}/relationships/{relationship:topics}/{sub:hide|like|report|favorite}	|	{version}/article/users/{id}/relationships/{relationship:topics}/{sub:hide,like,report,favorite}	|
+|	/users/{id}/relationships/{relationship:topics}/{sub:hide|like|report|favorite}	|	{version}/article/users/{id}/relationships/{relationship:topics}/{sub:hide}	|
 |	/users/{id}/relationships/{relationship:topics}	|	{version}/article/users/{id}/relationships/{relationship:topics}	|
 |	/users/relationships/topics/report/{id}	|	{version}/article/users/relationships/topics/report/{id}	|
 |	/users/relationships/topics/report	|	{version}/article/users/relationships/topics/report	|
