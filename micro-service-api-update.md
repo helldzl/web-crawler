@@ -184,6 +184,7 @@
 |	/article/admin/WordDictionary/{id}	|	{version}/article/admin/WordDictionary/{id}	|
 |	/article/admin/WordDictionary	|	{version}/article/admin/WordDictionary	|
 
+
 ## 抽奖微服务 /reward
 
 |	原 API	|	新 API	|
