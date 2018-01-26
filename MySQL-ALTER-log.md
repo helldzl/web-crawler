@@ -4,7 +4,21 @@
 
 ---
 
-# 2.3.0 (To be continues)
+# 2.3.0
+
+### 2018年1月26日
+
+> article.system_resource_lock (article服务的全局资源锁表)
+```sql
+CREATE TABLE `mifan_article`.`system_resource_lock` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `resource_type` TINYINT UNSIGNED NOT NULL,
+  `target_id` BIGINT UNSIGNED NOT NULL,
+  `version` INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `resource_type_target_id_unique` (`resource_type` ASC, `target_id` ASC),
+  INDEX `resource_type_target_id_version_idx` (`resource_type` ASC, `target_id` ASC, `version` ASC));
+```
 
 ---
 
