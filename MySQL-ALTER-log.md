@@ -5,6 +5,12 @@
 ---
 
 # 2.3.0
+### 2018年1月31日
+> article.topics_fetch (topics_fetch表增加一个点赞数字段)
+```sql
+ALTER TABLE `mifan_article`.`topics_fetch`
+ADD COLUMN `thumbs_up`  int(10) UNSIGNED  NOT NULL DEFAULT 0  AFTER `reviews`;
+```
 
 ### 2018年1月26日
 
