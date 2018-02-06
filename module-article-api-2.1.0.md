@@ -1510,6 +1510,7 @@ HOST: http://192.168.1.138/
     + title (String) - 标题
     + topicType (String) - 文章类型
     + content (String) - 文章内容
+    + contentSegment (String[]) - 文章段落
     + tags (String[]) - 标签
     + translatorAccount (String) - 翻译人员帐号
     + auditorAccount (String) - 审核人员帐号
@@ -1532,7 +1533,7 @@ HOST: http://192.168.1.138/
     + posts.features
     + posts.title - 必填
     + posts.description
-    + posts.content
+    + posts.contentSegment
     + posts.tags
 
 + 开始审核Request (application/json)
@@ -1547,20 +1548,19 @@ HOST: http://192.168.1.138/
         {
             "data":{
                 "state":4,
-                "auditOpinion":"我草暂存 yi'xia一下 ",
                 "posts":{
-                    "title":"我草u翻译任务??fan'yi'de翻译的很好",
-                    "description":"翻译的很fan'yi翻译 miao'shu描述2222222 ",
-                    "content":"翻译的很wo'shi'fan'yi'nei'rong我是翻译内容2222222",
+                    "title":"111111111我勒个去fan'yi'ren'wu翻译任务222222222 ",
+                    "language":2,
+                    "description":"22222221111111111f1an'yi翻译 miao'shu描述2222222 ",
+                    "contentSegment":[
+                        "diyiduanbucuo","dierduanbucuo","disanduanbucuo"
+                        ],
                     "features":[
                                 {
-                                    "_name":"翻译的很属性2",
-                                    "_value":"翻译的很属性2的值"
+                                    "_name":"属性2",
+                                    "_value":"属性2的值"
                                 }
-                            ],
-                    "tags":[
-                            "北美","无码"
-                        ]
+                            ]
                 }
             }
         }
@@ -1700,27 +1700,19 @@ HOST: http://192.168.1.138/
                 "title": "Virus TI2 Desktop",
                 "description": "Analog Modeling Desktop Synthesizer and 24-bit/192kHz Audio/MIDI Interface",
                 "content": "<div> \n <h2>Access Steps Up The Renowned Virus!</h2> \n",
-                "postsText": {
-                  "id": 1,
-                  "category": "Keyboards & Synthesizers,Synthesizers",
-                  "tag": "VirusTI2Desk",
-                  "title": "Virus TI2 Desktop",
-                  "feature": "[{\"_name\":\"Sound Engine Type(s)\",\"_value\":\"Analog Modeling\"}]",
-                  "description": "Analog Modeling Desktop Synthesizer and 24-bit/192kHz Audio/MIDI Interface",
-                  "content": "<div> \n <h2>Access Steps Up The Renowned Virus!</h2> \n "
-                },
+                "contentSegment": [
+                    "diyiduanbucuo",
+                    "dierduanbucuo",
+                    "disanduanbucuo"
+                ], 
                 "postType": 1,
                 "postTypeValue": "爬取"
               },
-              "postsText": {
-                "id": 1013367,
-                "category": "111111111",
-                "tag": "2222222222",
-                "title": "111111我草u翻译任务??fan'yi'de翻译的很好",
-                "feature": "[{\"_name\":\"翻译的很属性2\",\"_value\":\"翻译的很属性2的值\"}]",
-                "description": "1111111翻译的很fan'yi翻译 miao'shu描述2222222 ",
-                "content": "1111111翻译的很wo'shi'fan'yi'nei'rong我是翻译内容2222222"
-              },
+              "contentSegment": [
+                "diyiduanbucuo",
+                "dierduanbucuo",
+                "disanduanbucuo"
+              ],
               "postType": 3,
               "postTypeValue": "精翻"
             },
@@ -1747,7 +1739,7 @@ HOST: http://192.168.1.138/
     + post.features
     + post.title - 必填
     + post.description
-    + post.content
+    + post.contentSegment
     + posts.tags
 
 + 领取/审核失败后继续翻译Request (application/json)
@@ -1766,7 +1758,11 @@ HOST: http://192.168.1.138/
                     "title":"fan'yi'ren'wu翻译任务222222222 ",
                     "language":2,
                     "description":"fan'yi翻译 miao'shu描述2222222 ",
-                    "content":"wo'shi'fan'yi'nei'rong我是翻译内容2222222",
+                    "contentSegment":[
+                        "第一段",
+                        "第二段",
+                        "第三段"
+                    ],
                     "features":[
                                 {
                                     "_name":"属性2",
@@ -1906,27 +1902,19 @@ HOST: http://192.168.1.138/
                 "title": "Virus TI2 Desktop",
                 "description": "Analog Modeling Desktop Synthesizer and 24-bit/192kHz Audio/MIDI Interface",
                 "content": "<div> \n <h2>Access Steps Up The Renowned Virus!</h2> \n ",
-                "postsText": {
-                  "id": 1,
-                  "category": "Keyboards & Synthesizers,Synthesizers",
-                  "tag": "VirusTI2Desk",
-                  "title": "Virus TI2 Desktop",
-                  "feature": "[{\"_name\":\"Sound Engine Type(s)\",\"_value\":\"Analog Modeling\"}]",
-                  "description": "Analog Modeling Desktop Synthesizer and 24-bit/192kHz Audio/MIDI Interface",
-                  "content": "<div> \n <h2>Access Steps Up The Renowned Virus!</h2> \n 
-                },
+                "contentSegment": [
+                    "diyiduan",
+                    "dierduan",
+                    "disanduan"
+                  ],
                 "postType": 1,
                 "postTypeValue": "爬取"
               },
-              "postsText": {
-                "id": 1013367,
-                "category": "",
-                "tag": "",
-                "title": "fan'yi'ren'wu翻译任务222222222 ",
-                "feature": "[{\"_name\":\"属性2\",\"_value\":\"属性2的值\"}]",
-                "description": "fan'yi翻译 miao'shu描述2222222 ",
-                "content": "wo'shi'fan'yi'nei'rong我是翻译内容2222222"
-              },
+              "contentSegment": [
+                "diyiduan",
+                "dierduan",
+                "disanduan"
+              ],
               "postType": 3,
               "postTypeValue": "精翻"
             },
