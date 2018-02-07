@@ -64,10 +64,10 @@
 |	 -----	|	 -----	|
 |	/commentConfs/{id}	|	{version}/support/commentConfs/{id}	|
 |	/commentConfs	|	{version}/support/commentConfs	|
-|	/comments/{id}	|	{version}/support/comments/{id}	|
-|	/comments	|	{version}/support/comments	|
-|	/comments/theme	|	{version}/support/comments/theme	|
-|	/comments/hots	|	{version}/support/comments/hots	|
+|	/comments/{id}	|	{version}/article/comments/{id}	|
+|	/comments	|	{version}/article/comments	|
+|	/comments/theme	|	{version}/article/comments/theme	|
+|	/comments/hots	|	{version}/article/comments/hots	|
 |	/eventLogs	|	{version}/support/eventLogs	|
 |	/eventLogs/{id}	|	{version}/support/eventLogs/{id}	|
 |	/support/eventDics/{id}	|	{version}/support/eventDics/{id}	|
