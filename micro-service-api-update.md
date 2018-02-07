@@ -77,7 +77,7 @@
 |	/tags	|	{version}/support/tags	|
 |	/article/ranks	|	{version}/support/ranks	|
 |	/article/ranks/{key}	|	{version}/support/ranks/{key}	|
-|	/article/ranks/scores	|	{version}/support/ranks/scores	|
+|	/article/ranks/scores	|	{version}/article/ranks/scores	|
 |	/api/upload	|	{version}/support/upload	|
 
 ## 主题微服务 /article
