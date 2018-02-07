@@ -6,9 +6,12 @@ HOST: http://polls.apiblueprint.org/
 + 2017年7月12日
     + API初始化
 
++ 2018年2月7日
+    + 拆分服务后更新
+
 ## 评论模块
 
-## 评论 [/comments]
+## 评论 
     
 + Data
     + confId (long) - 评论配置标识，必填
@@ -29,13 +32,13 @@ HOST: http://polls.apiblueprint.org/
     + reComments (String) - 二级评论
     + hotComments (String) - 热门评论
 
-### 增加评论 [POST]
+
+### (POST)增加评论 [/v1/article/comments]
 
 + Description
     + [MUST] Authenticated
 
 + Parameters
-    + confId - 必填
     + themeId - 必填
     + topId - 必填，值为0时为一级评论
     + replayId - 非必填
@@ -48,7 +51,6 @@ HOST: http://polls.apiblueprint.org/
 
         {
             "data": {
-                "confId": 1,
                 "themeId": 1,
                 "topId": 1,
                 "replayId": 1,
@@ -92,13 +94,18 @@ HOST: http://polls.apiblueprint.org/
             ]
         }
 
-## (GET)评论集合 [/comments?page[number]=1&page[size]=5&filter[confId]=1&filter[themeId]=1&filter[topId]=1]
+## (GET)评论集合 [/v1/article/comments?page[number]=1&page[size]=5&filter[themeId]=1&filter[topId]=1]
+
++ Parameters
+    + filter[themeId] (long) - 必填
+    + filter[topId] (long) - 必填
+
 
 ### 查询评论集合 [GET]
 
 + Parameters
     + filter[confId] (long) - 必填
-    + filter[themeId] (long) - 必填
+    + filter[themeIds] (long[]) - 必填
     + filter[topId] (long) - 必填
 
 + Response 200 (application/json)
@@ -216,12 +223,11 @@ HOST: http://polls.apiblueprint.org/
           ]
         }
         
-## (GET)热门评论 [http://localhost/comments/hots?confId=1&themeId=1]
+## (GET)热门评论 [/v1/article/comments/hots?themeId=1]
 
 ### 查询热门评论 [GET]
 
 + Parameters
-    + filter[confId] (long) - 必填
     + filter[themeId] (long) - 必填
 
 
@@ -268,7 +274,7 @@ HOST: http://polls.apiblueprint.org/
 
 
         
-## (DELETE)评论 [/comments/{id}]
+## (DELETE)评论 [/v1/article/comments/{id}]
 
 + Description
     + [MUST] Authenticated
@@ -298,7 +304,7 @@ HOST: http://polls.apiblueprint.org/
             ]
         }
 
-## (GET)评论详情 [/comments/{id}]
+## (GET)评论详情 [/v1/article/comments/{id}]
 
 
 + Parameters
@@ -329,11 +335,10 @@ HOST: http://polls.apiblueprint.org/
         }
         
 
-## (GET)主题统计信息 [/comments/theme?confId=1&themeId=1]
+## (GET)主题统计信息 [/comments/theme?themeId=1]
 
 
 + Parameters
-    + confId (long) - 必填
     + themeId (long) - 必填
 
 + Response 200 (application/json)
@@ -358,7 +363,7 @@ HOST: http://polls.apiblueprint.org/
           }
         }
 
-## (GET)评论标签集合 [/commentConfs/{id}]
+## (GET)评论标签集合 [/v1/support/commentConfs/{id}]
 
 
 + Parameters
@@ -385,7 +390,7 @@ HOST: http://polls.apiblueprint.org/
 
 
 
-## 赞踩 [/praises]
+## 赞踩 [/v1/support/praises]
     
 + Data
     + type (int) - 类型，0：对主题点赞，1：对评论点赞
@@ -446,7 +451,7 @@ HOST: http://polls.apiblueprint.org/
          "X-User-ssid" : "dghpsdhipoiwtehgdfsgfasjdsklgjs"
      }
      
-## 日志 [/eventLogs]
+## 日志 [/v1/support/eventLogs]
   
   + Data
     + source (String) - 来源
@@ -454,9 +459,10 @@ HOST: http://polls.apiblueprint.org/
     + eventCode (String) - 自定义编码，定义在event_dic中
     + urlLog (String) - 请求的url
     + methodType (String) - 请求类型
-    + version (String) - 版本号
-    + pcMobile (int) - pc还是移动端 1：pc，2：移动端
-    + params (json) - 参数，json格式的字符串
+    + params (json) - 参数，json格式的字符串
+    + version (String) - 版本号    
+    + pcMobile (int) - pc还是移动端 1：pc，2：移动端    
+    + params (json) - 参数，json格式的字符串
     + isSuccess (int) - 是否成功
 
 ### 增加日志 [POST]
@@ -467,9 +473,9 @@ HOST: http://polls.apiblueprint.org/
     + eventCode (String) - 必填
     + methodType (String) - 非必填
     + params (String) - 非必填
-    + version (String) - 非必填
+    + version (String) - 非必填
     + pcMobile (int) - 非必填
-    + isSuccess (String) - 非必填
+    + isSuccess (String) - 非必填
 
     + Request (application/json)
 
@@ -514,3 +520,4 @@ HOST: http://polls.apiblueprint.org/
                 }
             ]
         }
+    
