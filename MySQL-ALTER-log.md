@@ -5,6 +5,102 @@
 ---
 
 # 2.3.0
+### 2018年2月11日
+> mifan-quiz (新建表)
+```sql
+CREATE TABLE `quizs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
+  `back_img` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '背景图',
+  `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0：待发布，1：发布中，2，结束发布',
+  `question_num` int(10) NOT NULL DEFAULT '0' COMMENT '题目个数',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `questions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `quiz_id` bigint(20) unsigned NOT NULL COMMENT '问卷id',
+  `question_title` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '问题标题',
+  `type` tinyint(1) NOT NULL COMMENT '类型，1：单选 2：多选',
+  `display_order` int(10) NOT NULL DEFAULT '1' COMMENT '排序',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `options` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `question_id` bigint(20) unsigned NOT NULL COMMENT '问题ID',
+  `option_title` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '选项标题',
+  `is_correct` tinyint(1) NOT NULL COMMENT '是否正确选项,0:否  1:是',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=238 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `answers` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `session_id` bigint(20) unsigned NOT NULL,
+  `question_id` bigint(20) unsigned NOT NULL COMMENT '问题标识',
+  `answers` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户提交的答案',
+  `is_right` tinyint(1) NOT NULL COMMENT '是否答对 0：否  1：是',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `session_id_question_id_unique` (`session_id`,`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2421 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `quiz_session` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `session_code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'session编码',
+  `quiz_id` bigint(20) unsigned NOT NULL COMMENT '试卷ID',
+  `answer_num` int(10) NOT NULL DEFAULT '0' COMMENT '答题个数',
+  `right_num` int(10) NOT NULL DEFAULT '0' COMMENT '答对个数',
+  `all_done` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否全部答完 0：否  1：是',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1270 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `quiz_count` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `quiz_id` bigint(20) unsigned NOT NULL,
+  `peoples` int(10) NOT NULL DEFAULT '0' COMMENT '完成人数',
+  `first` int(10) NOT NULL DEFAULT '0' COMMENT '得分0-10%人数',
+  `second` int(10) NOT NULL DEFAULT '0' COMMENT '得分10-19%人数',
+  `third` int(10) NOT NULL DEFAULT '0' COMMENT '得分20-29%人数',
+  `fourth` int(10) NOT NULL DEFAULT '0' COMMENT '得分30-39%人数',
+  `fifth` int(10) NOT NULL DEFAULT '0' COMMENT '得分40-49%人数',
+  `sixth` int(10) NOT NULL DEFAULT '0' COMMENT '得分50-59%人数',
+  `seventh` int(10) NOT NULL DEFAULT '0' COMMENT '得分60-69%人数',
+  `eighth` int(10) NOT NULL DEFAULT '0' COMMENT '得分70-79%人数',
+  `ninth` int(10) NOT NULL DEFAULT '0' COMMENT '得分80-89%人数',
+  `tenth` int(10) NOT NULL DEFAULT '0' COMMENT '得分90-100%人数',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `count_quiz_id_unique` (`quiz_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1395 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+```
+
 ### 2018年1月31日
 > article.topics_fetch (topics_fetch表增加一个点赞数字段)
 ```sql
