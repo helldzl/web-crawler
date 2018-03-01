@@ -5,6 +5,9 @@ HOST: http://192.168.1.138/
 
 2.2.0 mifan API 
 
++ 2018年3月1日
+    + 增加用户搜索记录API
+
 + 2017年12月21日
     + 增加比较目录/文件夹中的产品API
 
@@ -527,3 +530,61 @@ HOST: http://192.168.1.138/
 + Response 200 (application/json)
 
 + Response 204 (application/json)
+
+## 用户搜索记录
+
++ Data
+    + UserSearchHistory - 用户搜索记录
+        + ssid (String) - 会话id
+        + categoryId (long) - 分类id
+        + forumId (long) - 模块id
+        + userId (long) - 用户id
+    + SearchKeyword - 搜索关键字
+        + searchId (long) - 用户搜索记录id
+        + keyword (String) - 关键字
+        + num (int) - 关键字次数
+
+
+### 列表 [GET] /article/userSearchHistorys
+
++ Headers
+    + X-User-ssid
+
++ Parameters
+    + filter[categoryId] - 默认0
+    + filter[forumId] - 默认0
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            "呵呵呵呵呵",
+            "哈哈哈哈哈"
+          ]
+        }
+
+### 保存搜索记录 [POST] /article/userSearchHistorys
++ Headers
+    + X-User-ssid - 必填
+
++ Parameters
+    + categoryId - 默认0
+    + forumId - 默认0
+    + keyword - 必填
+
++ 新增Request (application/json)
+
+        {
+            "data":{
+                "keyword":"二哥酷吗"
+            }
+        }
++ Response 201 (application/json)
+
+        {
+          "data": {
+            "id": 10001,
+            "type": "userSearchHistorys"
+          }
+        }
+
