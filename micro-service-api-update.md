@@ -53,12 +53,9 @@
 |	/oauth/weChat/bind	|	{version}/user/oauth/weChat/bind
 |	/isFollow	|	{version}/user/isFollow
 
-# 米饭微服务（支持微服务，主题微服务，抽奖微服务）
-
-+ branch-2.3.0 {version} = "/v1"
-+ 米饭微服务包含多个未拆分的服务，需要统一设置一个版本号进行路由。
-
 ## 支持微服务 /support
++ branch-2.3.0 {version} = ""
++ 支持微服务因为已经单独拆分出来了，暂定版本号为空；
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
@@ -81,6 +78,8 @@
 |	/api/upload	|	{version}/support/upload	|
 
 ## 主题微服务 /article
++ branch-2.3.0 {version} = ""
++ 主题微服务因为已经单独拆分出来了，暂定版本号为空；
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
@@ -187,6 +186,10 @@
 |	/article/admin/WordDictionary	|	{version}/article/admin/WordDictionary	|
 
 ## 抽奖微服务 /reward
++ branch-2.3.0 {version} = ""
++ 新抽奖微服务（mysql存储）因为已经单独拆分出来了，暂定版本号为空；
+
+hhttp://note.youdao.com/noteshare?id=eca0b8a9db2b6eba554ce73e73090037
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
@@ -206,6 +209,8 @@
 |	/reward/admin/shares	|	{version}/reward/admin/shares	|
 
 ## 抽奖微服务 /award
++ branch-2.3.0 {version} = ""
++ 旧抽奖微服务（mongodb存储）因为已经单独拆分出来了，暂定版本号为空；
 
 |	原 API	|	新 API	|
 |	 -----	|	 -----	|
