@@ -4,7 +4,36 @@
 
 ---
 
-# 2.3.0
+# 2.2.0
+### 2018年3月9日
+> mifan-article (新建表)
+```sql
+CREATE TABLE `user_search_history` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ssid` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `forum_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `category_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ssid_forum_category_unique` (`ssid`,`forum_id`,`category_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=10024 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='用户搜索记录';
+
+CREATE TABLE `search_keyword` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `search_id` bigint(20) unsigned NOT NULL COMMENT 'user_search_history FK',
+  `keyword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `num` int(10) NOT NULL DEFAULT '1' COMMENT '次数',
+  `enabled` tinyint(4) NOT NULL DEFAULT '1',
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1273 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='搜索关键字';
+
+```
+
 ### 2018年2月11日
 > mifan-quiz (新建表)
 ```sql
