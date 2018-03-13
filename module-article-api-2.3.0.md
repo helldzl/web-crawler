@@ -5,6 +5,9 @@
 + 2018年3月9日
     + 初始化
 
+## (GET) 首页亮点产品
+    新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&sort=-created&page[size]=15&agg[size]=-1] 
+
 ## (GET) 48个热门品牌 [/brands/hot]
 
 + Response 200 (application/json)
