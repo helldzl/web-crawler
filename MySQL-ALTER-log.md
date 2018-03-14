@@ -3,6 +3,10 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 ---
+
+# 2.2.0
+
+
 ### 2018年3月14日
 > article.topics_product (topics_product表增加一个销售排名字段)
 ```sql
@@ -10,8 +14,6 @@ ALTER TABLE `mifan_article`.`topics_product`
 ADD COLUMN `sale_rank`  bigint(20)  UNSIGNED ;
 ```
 
-
-# 2.2.0
 ### 2018年3月9日
 > mifan-article (新建表)
 ```sql
