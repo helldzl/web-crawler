@@ -196,7 +196,7 @@
           ]
         }
         
-## (GET) 品牌详情页的四个相关咨询 [/fewTopics//newsForBrands?brands=akai] 
+## (GET) 品牌详情页的四个相关咨询 [/fewTopics/newsForBrands?brands=akai] 
 
 + Response 200 (application/json)
 
