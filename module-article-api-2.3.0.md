@@ -6,9 +6,12 @@
     + 初始化
 
 ## (GET) 首页亮点产品
-
 + 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&sort=-created&page[size]=15&agg[size]=-1] 
 + 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&sort=items.saleRank&page[size]=15&agg[size]=-1] 
+
+## (GET) 品牌详情两点产品
++ 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&filter[brand]=Blue&sort=-created&page[size]=15&agg[size]=-1]
++ 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&filter[brand]=Blue&sort=items.saleRank&page[size]=15&agg[size]=-1] 
 
 ## (GET) 48个热门品牌 [/brands/hot]
 
