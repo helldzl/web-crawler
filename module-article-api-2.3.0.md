@@ -18,6 +18,16 @@
 + 新品 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=-created&page[size]=15&agg[size]=-1
 + 热门 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=saleRank&page[size]=15&agg[size]=-1
 
+## 三级分类详情页面
+### 新闻评测（暂无接口）
+### 产品列表
+    /topics/search?filter[category]=无线麦克风&filter[forum]=1&page[number]=1&page[size]=15&sort=-created&agg[size]=-1
+### 亮点产品
++ 热门 /topics/search?filter[category]=无线麦克风&filter[forum]=1&filter[items.seedId]=11&page[size]=15&sort=saleRank&agg[size]=-1
++ 新品 /topics/search?filter[category]=无线麦克风&filter[forum]=1&filter[items.seedId]=11&page[size]=15&sort=-created&agg[size]=-1
+### 热门品牌
+要到48个品牌中有当前分类的品牌（接口暂无）
+    
 ### 热门品牌
 + 从48个热门品牌中筛选包含该分类的品牌（暂无接口）
 
