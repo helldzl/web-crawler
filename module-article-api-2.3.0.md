@@ -8,13 +8,35 @@
 ## 48个品牌名（搜索引擎认识的）
     Akai,AKG,Alesis,API Audio,Allen & Heath,Apogee,Avid,B&O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K&M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
-## (GET) 首页亮点产品
+## (GET) 首页
+### 亮点产品
 + 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&sort=-created&page[size]=15&agg[size]=-1] 
 + 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&sort=items.saleRank&page[size]=15&agg[size]=-1] 
+### (GET) 48个热门品牌 [/brands/hot]
 
-## (GET) 品牌详情亮点产品
-+ 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&filter[brand]=Blue&sort=-created&page[size]=15&agg[size]=-1]
-+ 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&filter[brand]=Blue&sort=items.saleRank&page[size]=15&agg[size]=-1] 
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 400663,
+              "name": "Akai",
+              "logo": "http://static.budee.com/yyren/image/113/28/1864140.jpg",
+              "rating": 0,
+              "reviews": 0,
+              "top": false
+            },
+            {
+              "id": 400668,
+              "name": "AKG",
+              "logo": "http://static.budee.com/yyren/image/113/28/1864145.jpg",
+              "rating": 0,
+              "reviews": 0,
+              "top": false
+            }
+          ]
+        }
+
 
 ## 一级分类详情页面
 ### 亮点产品
@@ -46,32 +68,12 @@
 ### 热门品牌
 + 从48个热门品牌中筛选包含该分类的品牌（暂无接口）
 
-## (GET) 48个热门品牌 [/brands/hot]
 
-+ Response 200 (application/json)
-
-        {
-          "data": [
-            {
-              "id": 400663,
-              "name": "Akai",
-              "logo": "http://static.budee.com/yyren/image/113/28/1864140.jpg",
-              "rating": 0,
-              "reviews": 0,
-              "top": false
-            },
-            {
-              "id": 400668,
-              "name": "AKG",
-              "logo": "http://static.budee.com/yyren/image/113/28/1864145.jpg",
-              "rating": 0,
-              "reviews": 0,
-              "top": false
-            }
-          ]
-        }
-
-## (GET) 品牌经典评测 [/fewTopics/hotByBrandsForReviews?brands=akai,akg,blue,gibson,martin guitars,yamaha,alesis,marshall,roland,avid,sennheiser,k&m&forum=4&size=10]
+## (GET) 品牌详情页
+### 亮点产品
++ 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&filter[brand]=Blue&sort=-created&page[size]=15&agg[size]=-1]
++ 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&filter[brand]=Blue&sort=items.saleRank&page[size]=15&agg[size]=-1] 
+### (GET) 品牌经典评测 [/fewTopics/hotByBrandsForReviews?brands=akai,akg,blue,gibson,martin guitars,yamaha,alesis,marshall,roland,avid,sennheiser,k&m&forum=4&size=10]
 
 + Response 200 (application/json)
 
@@ -232,7 +234,7 @@
           ]
         }
         
-## (GET) 品牌详情页的四个相关咨询 [/fewTopics/newsForBrands?brands=akai] 
+### (GET) 品牌详情页的四个相关咨询 [/fewTopics/newsForBrands?brands=akai] 
 
 + Response 200 (application/json)
 
