@@ -20,6 +20,8 @@
 ### 亮点产品
 + 新品 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=-created&page[size]=15&agg[size]=-1
 + 热门 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=saleRank&page[size]=15&agg[size]=-1
+### 热门品牌
+    /topics/search?page[size]=0&filter[forumId]=1&filter[categoryId]=2961&aggregation[brand]=brand.name&filter[brand.name]=Akai,AKG,Alesis,API Audio,Allen %26 Heath,Apogee,Avid,B%26O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K%26M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
 ## 二级分类详情页面
 ### 新闻评测（暂无接口）
@@ -29,7 +31,7 @@
 + 热门 /topics/search?filter[category]=无线麦克风&filter[forum]=1&filter[items.seedId]=11&page[size]=15&sort=saleRank&agg[size]=-1
 + 新品 /topics/search?filter[category]=无线麦克风&filter[forum]=1&filter[items.seedId]=11&page[size]=15&sort=-created&agg[size]=-1
 ### 热门品牌
-要到48个品牌中有当前分类的品牌（接口暂无）
+    /topics/search?page[size]=0&filter[forumId]=1&filter[category]=无线麦克风&aggregation[brand]=brand.name&filter[brand.name]=Akai,AKG,Alesis,API Audio,Allen %26 Heath,Apogee,Avid,B%26O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K%26M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
 ## 品牌二级分类详情页面 （例：AKG无线麦克风）
 ### 新闻评测（接口暂无）
