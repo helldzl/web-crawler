@@ -64,8 +64,8 @@
 ### 亮点产品
 + 热门 /topics/search?filter[category]=无线麦克风&filter[brand]=AKG&filter[forum]=1&filter[items.seedId]=11&sort=saleRank&page[size]=15&agg[size]=-1
 + 新品 /topics/search?filter[category]=无线麦克风&filter[brand]=AKG&filter[forum]=1&filter[items.seedId]=11&sort=-created&page[size]=15&agg[size]=-1
-### 其他分类
-用品牌筛选除了本分类的其他分类（暂无接口）
+### 其他分类（注意：filter[level_0.cn.raw]的值是一级分类，此接口是根据品牌和一级分类聚合二级分类）
+    /topics/search?page[size]=0&filter[forumId]=1&filter[brand.name]=Yamaha&filter[level_0.cn.raw]=吉他/贝斯&agg[group]=false&agg[image]=true&aggregation[category]=level_1.raw
     
 ### 热门品牌
 + 从48个热门品牌中筛选包含该分类的品牌（暂无接口）
