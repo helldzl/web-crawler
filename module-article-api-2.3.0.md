@@ -13,6 +13,14 @@
 + 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&filter[brand]=Blue&sort=-created&page[size]=15&agg[size]=-1]
 + 热门 (因未索引数据，暂不可用)[/topics/search?filter[forum]=1&filter[brand]=Blue&sort=items.saleRank&page[size]=15&agg[size]=-1] 
 
+## 二级分类页面
+### 亮点产品
++ 新品 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=-created&page[size]=15&agg[size]=-1
++ 热门 /topics/search?filter[category]=麦克风&filter[forum]=1&sort=saleRank&page[size]=15&agg[size]=-1
+
+### 热门品牌
++ 从48个热门品牌中筛选包含该分类的品牌（暂无接口）
+
 ## (GET) 48个热门品牌 [/brands/hot]
 
 + Response 200 (application/json)
