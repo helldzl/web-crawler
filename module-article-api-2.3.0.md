@@ -54,8 +54,60 @@
 + 新品 /topics/search?filter[category]=无线麦克风&filter[forum]=1&filter[items.seedId]=11&page[size]=15&sort=-created&agg[size]=-1
 ### 热门品牌
     /topics/search?page[size]=0&filter[forumId]=1&filter[category]=无线麦克风&aggregation[brand]=brand.name&filter[brand.name]=Akai,AKG,Alesis,API Audio,Allen %26 Heath,Apogee,Avid,B%26O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K%26M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
-### 其他分类（因2.3.0为发版，暂时无法使用，因本地代码今天无法启动，也没测试）
-    /forumCategories/otherChildren?parentId=1997&excludeId=2342
+### 其他分类 [/forumCategories/otherChildren?parentId=1997&excludeId=2342]
++ Response 200 (application/json)
+
+        {
+          "data": {
+            "id": 1997,
+            "enabled": 1,
+            "forumId": 1,
+            "rootId": 1997,
+            "parentId": 0,
+            "title": "Microphones",
+            "filename": "http://static.budee.com/yyren/image/category/1997.jpg",
+            "path": "1997",
+            "depth": 1,
+            "leaf": 0,
+            "displayOrder": 16,
+            "titleChinese": "麦克风",
+            "children": [
+              {
+                "id": 4223,
+                "enabled": 1,
+                "forumId": 1,
+                "rootId": 1997,
+                "parentId": 1997,
+                "title": "Live Microphones",
+                "filename": "http://static.budee.com/yyren/image/241/14/979421.jpg",
+                "path": "1997.3975",
+                "depth": 2,
+                "leaf": 1,
+                "displayOrder": 0,
+                "titleChinese": "现场麦克风",
+                "children": [],
+                "topics": []
+              },
+              {
+                "id": 2338,
+                "enabled": 1,
+                "forumId": 1,
+                "rootId": 1997,
+                "parentId": 1997,
+                "title": "Vocal Mics",
+                "filename": "http://static.budee.com/yyren/image/244/13/914532.jpg",
+                "path": "1997.2338",
+                "depth": 2,
+                "leaf": 0,
+                "displayOrder": 0,
+                "titleChinese": "声乐麦克风",
+                "children": [],
+                "topics": []
+              }
+            ],
+            "topics": []
+          }
+        }
 
 ## 品牌二级分类详情页面 （例：AKG无线麦克风）
 ### 新闻评测（接口暂无）
