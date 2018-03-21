@@ -46,7 +46,9 @@
     /topics/search?page[size]=0&filter[forumId]=1&filter[categoryId]=2961&aggregation[brand]=brand.name&filter[brand.name]=Akai,AKG,Alesis,API Audio,Allen %26 Heath,Apogee,Avid,B%26O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K%26M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
 ## 二级分类详情页面
-### 新闻评测（暂无接口）
+### 新闻评测
+    + 新闻 /topics/search?filter[q]=无线麦克风&filter[forum]=3&page[size]=1&agg[size]=-1
+    + 评测 /topics/search?filter[q]=无线麦克风&filter[forum]=4&page[size]=4&agg[size]=-1 
 ### 产品列表
     /topics/search?filter[category]=无线麦克风&filter[forum]=1&page[number]=1&page[size]=15&sort=-created&agg[size]=-1
 ### 亮点产品
@@ -110,7 +112,9 @@
         }
 
 ## 品牌二级分类详情页面 （例：AKG无线麦克风）
-### 新闻评测（接口暂无）
+### 新闻评测
+    + 新闻 /topics/search?filter[q]=yamaha无线麦克风&filter[forum]=3&page[size]=1&agg[size]=-1
+    + 评测 /topics/search?filter[q]=yamaha无线麦克风&filter[forum]=4&page[size]=4&agg[size]=-1
 ### 产品列表
     /topics/search?filter[category]=无线麦克风&filter[brand]=AKG&filter[forum]=1&sort=-created&page[number]=1&page[size]=15&agg[size]=-1
 ### 亮点产品
