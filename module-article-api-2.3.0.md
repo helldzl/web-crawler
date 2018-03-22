@@ -12,6 +12,7 @@
 ### 亮点产品
 + 热门 /topics/search?filter[q]=我的关键字&filter[forum]=1&filter[items.saleRank:ge]=1&agg[size]=-1
 + 新品 /topics/search?filter[q]=我的关键字风&filter[forum]=1&filter[created:ge]=2018-02-22&agg[size]=-1
+    + 说明：filter[created:ge]参数请算出一个月前的日期
 
 ## 首页
 ### 亮点产品
