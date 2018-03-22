@@ -8,6 +8,11 @@
 ## 48个品牌名（搜索引擎认识的）
     Akai,AKG,Alesis,API Audio,Allen & Heath,Apogee,Avid,B&O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K&M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
+## 搜索结果页面
+### 亮点产品
++ 热门 /topics/search?filter[q]=我的关键字&filter[forum]=1&filter[items.saleRank:ge]=1&agg[size]=-1
++ 新品 /topics/search?filter[q]=我的关键字风&filter[forum]=1&filter[created:ge]=2018-02-22&agg[size]=-1
+
 ## 首页
 ### 亮点产品
 + 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&sort=-created&page[size]=15&agg[size]=-1] 
