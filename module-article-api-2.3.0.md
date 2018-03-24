@@ -130,7 +130,8 @@
     /topics/search?page[size]=0&filter[forumId]=1&filter[brand.name]=Yamaha&filter[level_0.cn.raw]=吉他/贝斯&agg[group]=false&agg[image]=true&aggregation[category]=level_1.raw
     
 ### 热门品牌
-+ 从48个热门品牌中筛选包含该分类的品牌（暂无接口）
++ 从48个热门品牌中筛选包含该分类的品牌
+    /topics/search?page[size]=0&filter[forumId]=1&filter[category]=无线麦克风&aggregation[brand]=brand.name&filter[brand.name]=Akai,AKG,Alesis,API Audio,Allen %26 Heath,Apogee,Avid,B%26O Play,Blue,Bettermaker,Burl Audio,Chandler Limited,Crown,DPA,DiGiGrid,EAW,EV,Empirical Labs,Fender,Genelec,Gibson,Heritage Audio,Icon,JBL,K%26M,Lexicon,MAGIC-V,MOTU,Manley,Marshall,Martin Guitars,Pearl,Pioneer,PreSonus,QSC,Quested,Roland,RØDE Microphones,Sennheiser,Shadow Hills Industries,Steinberg,T-Rex,TC Electronic,Telefunken,Trinnov,Violet,Waves,Yamaha
 
 
 ## 品牌详情页
