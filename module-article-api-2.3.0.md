@@ -137,7 +137,7 @@
 ### 亮点产品
 + 新品 [/topics/search?filter[forum]=1&filter[items.seedId]=11&filter[brand]=Blue&sort=-created&page[size]=15&agg[size]=-1]
 + 热门 [/topics/search?filter[forum]=1&filter[brand]=Blue&sort=items.saleRank&page[size]=15&agg[size]=-1] 
-### (GET) 品牌经典评测 [/fewTopics/hotByBrandsForReviews?filter[brand.name]=akai,akg,blue,gibson,martin guitars,yamaha,alesis,marshall,roland,avid,sennheiser,k&m&filter[forum]=4&filter[imageSize:ge]=4&fromDays=90&page[size]=10]
+### (GET) 品牌经典评测 [/fewTopics/hotByBrandsForReviews?brands=akai,akg,blue,gibson,martin guitars,yamaha,alesis,marshall,roland,avid,sennheiser,k&m&filter[forum]=4&size=10]
 
 + Response 200 (application/json)
 
