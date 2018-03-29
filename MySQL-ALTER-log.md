@@ -3,9 +3,89 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 ---
+# 2.3.0
+
+### 2018年3月29日
+> article(新建美频的6张表)
+```sql
+CREATE TABLE `mp_brands` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '品牌名',
+  `description` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `feature` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL,
+  `modifier` bigint(20) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `mp_categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `root_id` bigint(20) unsigned NOT NULL COMMENT '根节点',
+  `parent_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '父节点',
+  `type` tinyint(1) NOT NULL COMMENT '0:大类,1:型号,2:小类',
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标题图',
+  `mobile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机标题图',
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路径',
+  `depth` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '深度',
+  `leaf` tinyint(1) NOT NULL COMMENT '叶子节点',
+  `display_order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL,
+  `modifier` bigint(20) unsigned NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `mp_brand_categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `brand_id` bigint(20) unsigned NOT NULL COMMENT '品牌标识',
+  `mp_category_id` bigint(20) unsigned NOT NULL COMMENT '分类标识',
+  PRIMARY KEY (`id`),
+  KEY `brand_idx` (`brand_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `mp_downloads` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(1) NOT NULL COMMENT '0：91助手，1：驱动下载，2：常用软件',
+  `display_order` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标题图',
+  `link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '下载地址',
+  `times` int(10) NOT NULL DEFAULT '0' COMMENT '下载次数',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `creator` bigint(20) unsigned NOT NULL COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `type_index` (`type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `topics_mp` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(1) NOT NULL COMMENT '类型：0：图文，1：图文+视频，2：视频',
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `up_times` int(10) NOT NULL DEFAULT '0' COMMENT 'up次数',
+  `mp_category_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '美频分类',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topics_idx_unique` (`topic_id`) USING BTREE,
+  KEY `mp_category_idx` (`mp_category_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `topics_mpdownloads` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `mp_download_id` bigint(20) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_download_unique` (`topic_id`,`mp_download_id`) USING BTREE,
+  KEY `topic_idx` (`topic_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
 
 # 2.2.0
-
 
 ### 2018年3月14日
 > article.topics_product (topics_product表增加一个销售排名字段)
