@@ -223,12 +223,12 @@ HOST: http://polls.apiblueprint.org/
           ]
         }
         
-## (GET)热门评论 [/v1/article/comments/hots?themeId=1]
+## (GET)热门评论 [/v1/article/comments/hots?topicId=1]
 
 ### 查询热门评论 [GET]
 
 + Parameters
-    + filter[themeId] (long) - 必填
+    + topicId (long) - 必填
 
 
 + Response 200 (application/json)
