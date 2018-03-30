@@ -23,7 +23,7 @@ CREATE TABLE `mp_brands` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE `mp_categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `root_id` bigint(20) unsigned NOT NULL COMMENT '根节点',
+  `root_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '根节点',
   `parent_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '父节点',
   `type` tinyint(1) NOT NULL COMMENT '0:大类,1:型号,2:小类',
   `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
@@ -31,7 +31,7 @@ CREATE TABLE `mp_categories` (
   `mobile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机标题图',
   `path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路径',
   `depth` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '深度',
-  `leaf` tinyint(1) NOT NULL COMMENT '叶子节点',
+  `leaf` tinyint(1) NOT NULL DEFAULT '0' COMMENT '叶子节点',
   `display_order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `creator` bigint(20) unsigned NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `mp_categories` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE `mp_brand_categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `brand_id` bigint(20) unsigned NOT NULL COMMENT '品牌标识',
