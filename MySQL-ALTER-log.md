@@ -29,7 +29,7 @@ CREATE TABLE `mp_categories` (
   `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标题图',
   `mobile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机标题图',
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '路径',
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '路径',
   `depth` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '深度',
   `leaf` tinyint(1) NOT NULL COMMENT '叶子节点',
   `display_order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
