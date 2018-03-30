@@ -34,8 +34,8 @@ CREATE TABLE `mp_categories` (
   `leaf` tinyint(1) NOT NULL DEFAULT '0' COMMENT '叶子节点',
   `display_order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `creator` bigint(20) unsigned NOT NULL,
-  `modifier` bigint(20) unsigned NOT NULL,
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
