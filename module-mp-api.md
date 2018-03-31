@@ -4,6 +4,8 @@
 
 + 2018年3月30日
     + 初始化
++ 2018年3月31日
+    + 后台品牌管理api
 
 + Data
     + mpBrands - 美频品牌
@@ -59,6 +61,8 @@
         + modifier (long)
         + created (date)
         + modified (date)
+
+# 前台
 
 ## 新闻模块
 
@@ -131,3 +135,140 @@
     + filter[type] 0:91助手下载，1：驱动下载，2：常用软件下载
     + times 下载次数
     + created 创建时间
+
+# 后台
+## 品牌管理 [/mpBrands]
+
+### 列表 [GET] /mpBrands
+
++ Parameters
+    + filter[id]
+    + filter[title]
+
++ Response 200 (application/json)
+
+        {
+          "meta": {
+            "totalPages": 1,
+            "totalElements": 7,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 7,
+            "first": true,
+            "last": true,
+            "sort": null
+          },
+          "links": {
+            "self": "/mpBrands?page[number]=1&page[size]=10",
+            "first": "/mpBrands?page[number]=1&page[size]=10",
+            "last": "/mpBrands?page[number]=1&page[size]=10"
+          },
+          "data": [
+            {
+              "id": 1,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "title": "ICON"
+            },
+            {
+              "id": 2,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "title": "BLUE"
+            }
+          ]
+        }
+### 添加品牌 [POST] /mpBrands
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Parameters
+    + title - 必填
+    + description
+    + features
+    + image
+
++ 新增Request (application/json)
+
+        {
+            "data":{
+                "title":"世界著名品牌",
+                "description":"我是描绘苏",
+                "images":"tupian.jpg",
+                "features":[
+                            {
+                                "_name":"location",
+                                "_value":"中国"
+                            },{
+                                "_name":"website",
+                                "_value":"www.baidu.com"
+                            },{
+                                "_name":"history",
+                                "_value":"百度最牛逼"
+                            }
+                        ]
+            }
+        }
++ Response 201 (application/json)
+
+        {
+          "data": {
+            "id": 8,
+            "type": "mpBrands"
+          }
+        }
+### 修改品牌 [PATCH] /mpBrands/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Parameters
+    + title - 必填
+    + description
+    + features
+    + image
++ 修改Request 200 (application/json)
+    
+        {
+            "data":{
+                "title":"世界著名品牌假的",
+                "description":"我是描绘苏",
+                "images":"tupian.jpg",
+                "features":[
+                            {
+                                "_name":"location",
+                                "_value":"中国111"
+                            },{
+                                "_name":"website",
+                                "_value":"www.baidu.com"
+                            },{
+                                "_name":"history",
+                                "_value":"百度最牛逼"
+                            }
+                        ]
+            }
+        }
+
+### 删除品牌 [DELETE] /mpBrands/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Response 204
+
+### 品牌详情 [GET] /mpBrands/{id}
++ Response 204
+
+        {
+          "data": {
+            "id": 8,
+            "enabled": 1,
+            "creator": 1031,
+            "modifier": 1031,
+            "created": "2018-03-31 16:21:28",
+            "modified": "2018-03-31 16:28:30",
+            "title": "世界著名品牌假的",
+            "description": "我是描绘苏",
+            "feature": "[{\"_name\":\"location\",\"_value\":\"中国\"},{\"_name\":\"website\",\"_value\":\"www.baidu.com\"},{\"_name\":\"history\",\"_value\":\"百度最牛逼\"}]"
+          }
+        }
