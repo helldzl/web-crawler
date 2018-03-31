@@ -50,11 +50,11 @@
         + modified (date)
     + topicsMp - 美频文章相关数据
         + id (long)
-        + type (type) - 类型：0：图文，1：视频
-        + type (topicId) - 
-        + type (upTimes) - 
-        + type (mpCategoryId) - 
-        + enabled (int) - 是否可用 0/1:否/是
+        + type (int) - 类型：0：图文，1：视频
+        + topicId (long) - 主题标识
+        + upTimes (int) - 置顶次数
+        + mpCategoryId (long) - 美频教程分类标识
+        + enabled (int) - 是否可用 0/1:否/是
         + creator (long)
         + modifier (long)
         + created (date)
