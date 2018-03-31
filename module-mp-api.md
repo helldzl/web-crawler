@@ -36,7 +36,7 @@
 ## 技术支持模块
 
 ### 首页
-+ 常见问题|知识库 (GET)/mp/topics/support?fromDays=30&filter[forum]=7&filter[categoryId]=xx&page[size]=15
++ 常见问题|知识库 (GET)/mp/topics/supports?fromDays=30&filter[forum]=7&filter[categoryId]=xx&page[size]=15
     + params
         + fromDays 从何时开始的点击量排序，根据现在的需求填30就可以
         + filter[forum] 必填7
