@@ -5,6 +5,61 @@
 + 2018年3月30日
     + 初始化
 
++ Data
+    + mpBrands - 美频品牌
+        + id (long) - 标识
+        + title (String) - 品牌名
+        + description (String) - 描述
+        + feature (String) - 属性
+        + image (String) - 图片
+        + enabled (int) - 是否可用 0/1:否/是
+        + creator (long)
+        + modifier (long)
+        + created (date)
+        + modified (date)
+    + mpCategoires - 美频产品教程分类
+        + id (long)
+        + rootId (long) - 根标识
+        + parentId (long) - 父标识
+        + type (int) - 0:大类,1:型号,2:小类
+        + title (String) - 标题
+        + image (String) - 图片
+        + mobileImage (String) - 手机版图片
+        + path (String) - 路径
+        + depth (String) - 深度
+        + leaf (int) - 是否叶子节点 0/1:否/是
+        + displayOrder (int) - 排序
+        + enabled (int) - 是否可用 0/1:否/是
+        + creator (long)
+        + modifier (long)
+        + created (date)
+        + modified (date)
+    + mpDownloads - 美频下载
+        + id (long)
+        + type (int) - 0：91助手，1：驱动下载，2：常用软件
+        + displayOrder (int) - 排序
+        + title (String) - 标题
+        + description (String) - 描述
+        + image (String) - 图片
+        + link (String) - 下载链接
+        + times (int) - 下载次数
+        + enabled (int) - 是否可用 0/1:否/是
+        + creator (long)
+        + modifier (long)
+        + created (date)
+        + modified (date)
+    + topicsMp - 美频文章相关数据
+        + id (long)
+        + type (type) - 类型：0：图文，1：视频
+        + type (topicId) - 
+        + type (upTimes) - 
+        + type (mpCategoryId) - 
+        + enabled (int) - 是否可用 0/1:否/是
+        + creator (long)
+        + modifier (long)
+        + created (date)
+        + modified (date)
+
 ## 新闻模块
 
 ### 首页热门 (GET)/mp/topics/hotnews
