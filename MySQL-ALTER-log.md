@@ -66,7 +66,7 @@ CREATE TABLE `mp_downloads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE `topics_mp` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `type` tinyint(1) NOT NULL COMMENT '类型：0：图文，1：图文+视频，2：视频',
+  `type` tinyint(1) NOT NULL COMMENT '类型：0：图文，1：视频',
   `topic_id` bigint(20) unsigned NOT NULL,
   `up_times` int(10) NOT NULL DEFAULT '0' COMMENT 'up次数',
   `mp_category_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '美频分类',
