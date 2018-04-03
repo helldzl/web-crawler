@@ -44,8 +44,9 @@ CREATE TABLE `mp_brand_categories` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `brand_id` bigint(20) unsigned NOT NULL COMMENT '品牌标识',
   `mp_category_id` bigint(20) unsigned NOT NULL COMMENT '分类标识',
+  `type` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0:大类,1:型号',
   PRIMARY KEY (`id`),
-  KEY `brand_idx` (`brand_id`) USING BTREE
+  KEY `brand_type_idx` (`brand_id`,`type`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 CREATE TABLE `mp_downloads` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
