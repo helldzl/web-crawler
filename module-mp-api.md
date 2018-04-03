@@ -102,7 +102,7 @@
         + filter[categoryId] 待定（这个要注意，测试服务器和生产服务器可能不一样）
         + page[size] 根据需求填写
 + 选择品牌 (GET)/mpBrands
-+ 根据品牌查询一级分类及二级分类（产品型号） (GET)/mpCategories?filter[brandId]=1
++ 根据品牌查询一级分类及二级分类（产品型号） (GET)/mpCategories/cascade?filter[brandId]=1
 
 ### 技术支持页
 + 常见问题|知识库轮播图 (接口同首页常见问题|知识库)
