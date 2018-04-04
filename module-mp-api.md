@@ -5,7 +5,8 @@
 + 2018年3月30日
     + 初始化
 + 2018年3月31日
-    + 后台品牌管理api
+    + 后台品牌管理api
+
 
 + Data
     + mpBrands - 美频品牌
@@ -95,20 +96,21 @@
 ## 技术支持模块
 
 ### 首页
-+ 常见问题|知识库 (GET)/mp/topics/supports?fromDays=30&filter[forum]=7&filter[categoryId]=xx&page[size]=15
++ 常见问题 | 知识库 (GET)/mp/topics/supports?fromDays=30&filter[forum]=7&filter[categoryId]=xx&page[size]=15
     + params
         + fromDays 从何时开始的点击量排序，根据现在的需求填30就可以
         + filter[forum] 必填7
-        + filter[categoryId] 待定（这个要注意，测试服务器和生产服务器可能不一样）
+        + filter[categoryId] 常见问题=3978 | 知识库=3979 待定（这个要注意，测试服务器和生产服务器可能不一样）
         + page[size] 根据需求填写
 + 选择品牌 (GET)/mpBrands
 + 根据品牌查询一级分类及二级分类（产品型号） (GET)/mpCategories/cascade?filter[brandId]=1
 
 ### 技术支持页
-+ 常见问题|知识库轮播图 (接口同首页常见问题|知识库)
-+ 轮播图下方数据 (GET)/topics/search?filter[forum]=7&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
++ 常见问题 | 知识库轮播图 (接口同首页常见问题|知识库)
++ 轮播图下方数据 (GET)/topics/search?filter[forum]=7&filter[categoryId]=xx&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
     + params
         + filter[forum] 必填7
+        + filter[categoryId] 常见问题=3978 | 知识库=3979
         + agg[size] 必填-1
         + sort 必填-created
         + page[number]
