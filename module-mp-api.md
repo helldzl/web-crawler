@@ -12,8 +12,10 @@
     + mpBrands - 美频品牌
         + id (long) - 标识
         + title (String) - 品牌名
-        + description (String) - 描述
+        + description (String) - 品牌介绍/描述
         + feature (String) - 属性
+            + location (String) - 公司总部
+            + history (String) - 品牌历史
         + image (String) - 图片
         + enabled (int) - 是否可用 0/1:否/是
         + creator (long)
@@ -110,7 +112,7 @@
 + 轮播图下方数据 (GET)/topics/search?filter[forum]=7&filter[categoryId]=xx&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
     + params
         + filter[forum] 必填7
-        + filter[categoryId] 常见问题=3978 | 知识库=3979
+        + filter[categoryId] 常见问题=3978 | 知识库=3979待定（这个要注意，测试服务器和生产服务器可能不一样）
         + agg[size] 必填-1
         + sort 必填-created
         + page[number]
