@@ -193,6 +193,7 @@
     + description
     + features
     + image
+    + mpCategoryIds
 
 + 新增Request (application/json)
 
@@ -212,7 +213,12 @@
                                 "_name":"history",
                                 "_value":"百度最牛逼"
                             }
-                        ]
+                        ],
+                "mpCategoryIds":[
+                        1000,
+                        2000,
+                        1000
+                    ]
             }
         }
 + Response 201 (application/json)
@@ -232,17 +238,18 @@
     + description
     + features
     + image
+    + mpCategoryIds
 + 修改Request 200 (application/json)
     
         {
             "data":{
-                "title":"世界著名品牌假的",
+                "title":"中国著名品牌",
                 "description":"我是描绘苏",
-                "images":"tupian.jpg",
+                "images":"zhongguo.jpg",
                 "features":[
                             {
                                 "_name":"location",
-                                "_value":"中国111"
+                                "_value":"中国"
                             },{
                                 "_name":"website",
                                 "_value":"www.baidu.com"
@@ -250,7 +257,11 @@
                                 "_name":"history",
                                 "_value":"百度最牛逼"
                             }
-                        ]
+                        ],
+                "mpCategoryIds":[
+                        2,
+                        3
+                    ]
             }
         }
 
