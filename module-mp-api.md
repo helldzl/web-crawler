@@ -272,18 +272,45 @@
 + Response 204
 
 ### 品牌详情 [GET] /mpBrands/{id}
-+ Response 204
++ Response 200
 
         {
           "data": {
-            "id": 8,
+            "id": 9,
             "enabled": 1,
             "creator": 1031,
             "modifier": 1031,
-            "created": "2018-03-31 16:21:28",
-            "modified": "2018-03-31 16:28:30",
-            "title": "世界著名品牌假的",
+            "created": "2018-04-09 17:36:18",
+            "modified": "2018-04-10 11:54:23",
+            "title": "中国著名品牌",
             "description": "我是描绘苏",
-            "feature": "[{\"_name\":\"location\",\"_value\":\"中国\"},{\"_name\":\"website\",\"_value\":\"www.baidu.com\"},{\"_name\":\"history\",\"_value\":\"百度最牛逼\"}]"
+            "features": [
+              {
+                "_name": "location",
+                "_value": "中国"
+              },
+              {
+                "_name": "website",
+                "_value": "www.baidu.com"
+              },
+              {
+                "_name": "history",
+                "_value": "百度最牛逼"
+              }
+            ],
+            "mpCategories": [
+              {
+                "id": 2,
+                "type": 0,
+                "title": "麦克风",
+                "leaf": 0
+              },
+              {
+                "id": 3,
+                "type": 0,
+                "title": "话放/耳放",
+                "leaf": 0
+              }
+            ]
           }
         }
