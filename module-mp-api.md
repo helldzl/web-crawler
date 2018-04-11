@@ -6,7 +6,8 @@
     + 初始化
 + 2018年3月31日
     + 后台品牌管理api
-
++ 2018年4月11日
+    + 后台分类管理api
 
 + Data
     + mpBrands - 美频品牌
@@ -201,7 +202,7 @@
             "data":{
                 "title":"世界著名品牌",
                 "description":"我是描绘苏",
-                "images":"tupian.jpg",
+                "image":"tupian.jpg",
                 "features":[
                             {
                                 "_name":"location",
@@ -314,3 +315,248 @@
             ]
           }
         }
+
+## 分类管理 [/mpCategories]
+
+### 列表 [GET] /mpCategories
+
++ Parameters
+    + filter[id]
+    + filter[title]
+    + page[number]
+    + page[size]
+
++ Response 200 (application/json)
+    
+        {
+          "meta": {
+            "totalPages": 67,
+            "totalElements": 667,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 10,
+            "first": true,
+            "last": false,
+            "sort": null
+          },
+          "links": {
+            "self": "/mpCategories?page[number]=1&page[size]=10",
+            "first": "/mpCategories?page[number]=1&page[size]=10",
+            "next": "/mpCategories?page[number]=2&page[size]=10",
+            "last": "/mpCategories?page[number]=67&page[size]=10"
+          },
+          "data": [
+            {
+              "id": 1,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "rootId": 1,
+              "parentId": 0,
+              "type": 0,
+              "title": "声卡",
+              "path": "1",
+              "depth": 1,
+              "leaf": 0,
+              "displayOrder": 0
+            },
+            {
+              "id": 2,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "rootId": 2,
+              "parentId": 0,
+              "type": 0,
+              "title": "麦克风",
+              "path": "2",
+              "depth": 1,
+              "leaf": 0,
+              "displayOrder": 0
+            }
+          ]
+        }
+
+### 型号列表 [GET] /mpCategories/models?filter[parentId]=2
+
++ Parameters
+    + filter[parentId]
+    + filter[id]
+    + filter[title]
+    + filter[brandId]
+    + page[number]
+    + page[size]
+
++ Response 200 (application/json)
+    
+        {
+          "meta": {
+            "totalPages": 1,
+            "totalElements": 1,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 1,
+            "first": true,
+            "last": true,
+            "sort": null
+          },
+          "links": {
+            "self": "/mpCategories/models?filter[parentId]=1&filter[id]=7&page[number]=1&page[size]=10",
+            "first": "/mpCategories/models?filter[parentId]=1&filter[id]=7&page[number]=1&page[size]=10",
+            "last": "/mpCategories/models?filter[parentId]=1&filter[id]=7&page[number]=1&page[size]=10"
+          },
+          "data": [
+            {
+              "id": 7,
+              "creator": 0,
+              "modifier": 0,
+              "created": "2018-03-30 11:12:53",
+              "modified": "2018-03-30 11:12:53",
+              "parentId": 1,
+              "type": 1,
+              "title": "MICUVST",
+              "brandId": 1,
+              "brandName": "ICON"
+            }
+          ]
+        }
+
+### 分类详情 [GET] /mpCategories/{id}
++ Response 200
+
+        {
+          "data": {
+            "id": 665,
+            "enabled": 1,
+            "creator": 0,
+            "modifier": 1031,
+            "created": "2018-04-11 11:29:07",
+            "modified": "2018-04-11 16:17:38",
+            "rootId": 663,
+            "parentId": 663,
+            "type": 1,
+            "title": "下属型222号",
+            "path": "663.665",
+            "depth": 2,
+            "leaf": 0,
+            "displayOrder": 0,
+            "children": [
+              {
+                "id": 666,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "created": "2018-04-11 11:29:07",
+                "modified": "2018-04-11 11:29:07",
+                "rootId": 663,
+                "parentId": 665,
+                "type": 2,
+                "title": "硬件/驱动/机架/系统",
+                "path": "663.665.666",
+                "depth": 3,
+                "leaf": 1,
+                "displayOrder": 0
+              },
+              {
+                "id": 667,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "created": "2018-04-11 11:29:07",
+                "modified": "2018-04-11 11:29:07",
+                "rootId": 663,
+                "parentId": 665,
+                "type": 2,
+                "title": "直播软件教程",
+                "path": "663.665.667",
+                "depth": 3,
+                "leaf": 1,
+                "displayOrder": 0
+              },
+              {
+                "id": 668,
+                "enabled": 1,
+                "creator": 0,
+                "modifier": 0,
+                "created": "2018-04-11 11:29:07",
+                "modified": "2018-04-11 11:29:07",
+                "rootId": 663,
+                "parentId": 665,
+                "type": 2,
+                "title": "其他",
+                "path": "663.665.668",
+                "depth": 3,
+                "leaf": 1,
+                "displayOrder": 0
+              }
+            ],
+            "brandId": 9,
+            "brandName": "中国著名品牌"
+          }
+        }
+        
+### 添加分类 [POST] /mpCategories
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Parameters
+    + title - 必填
+    + type - 必填 0/1:大类/型号
+    + parentId 当type=1时必填
+    + brandId 当type=1时必填，当type=0时填了没用
+    + image
+    + mobileImage
+    + displayOrder
+
++ 新增Request (application/json)
+    + 添加大类
+
+            {
+                "data":{
+                    "title":"管理分类测试",
+                    "type":0
+                }
+            }
+    + 添加型号
+    
+            {
+                "data":{
+                    "title":"型号1",
+                    "type":1,
+                    "brandId":8,
+                    "parentId":663
+                }
+            }
++ Response 201 (application/json)
+
+        {
+          "data": {
+            "id": 663,
+            "type": "mpCategories"
+          }
+        }
+### 修改分类 [PATCH] /mpCategories/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Parameters
+    + title - 必填
+    + brandId 当type=0时填了没用
+    + image
+    + mobileImage
+    + displayOrder
++ 修改Request 200 (application/json)
+    
+        {
+            "data":{
+                "title":"型222号",
+                "image":"tupian.jpg",
+                "brandId":9
+            }
+        }
+
+### 删除分类 [DELETE] /mpCategories/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Response 204
