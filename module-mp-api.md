@@ -54,17 +54,23 @@
         + modifier (long)
         + created (date)
         + modified (date)
-    + topicsMp - 美频文章相关数据
-        + id (long)
-        + type (int) - 类型：0：图文，1：视频
-        + topicId (long) - 主题标识
-        + upTimes (int) - 置顶次数
-        + mpCategoryId (long) - 美频教程分类标识
-        + enabled (int) - 是否可用 0/1:否/是
-        + creator (long)
-        + modifier (long)
-        + created (date)
-        + modified (date)
+    + topics 美频文章
+        + title (String) - 产品标题
+        + forumId (long) - 模块标识，7：美频技术支持8：美频行业新闻
+        + description (String) - 描述
+        + id (long) - 新闻标识
+        + content (String) - 内容，富文本编辑框
+        + tags (long[]) - 标签
+        + images (Object[]) - 图片
+        + creator (long) - 创建人
+        + modifier (long) - 修改人
+        + categoryId (long) - 3978：常见问题，3979：知识库，3980：产品教程
+        + topicsMp - 美频文章相关数据
+            + id (long)
+            + type (int) - 类型：0：图文，1：视频
+            + topicId (long) - 主题标识
+            + upTimes (int) - 置顶次数
+            + mpCategoryId (long) - 美频教程分类标识
 
 # 前台
 
@@ -560,3 +566,268 @@
     + [MUST] Authenticated
     + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
 + Response 204
+
+## 文章管理 - 行业新闻 | 常见问题 | 知识库 | 产品教程
+
+### (GET)文章集合 [/mp/topics?filter[forumId]=7&filter[categoryId]=3980&page[number]=1&page[size]=15
+
++ Parameters
+    + filter[forumId] 必填 7：技术支持 8：行业新闻
+    + filter[categoryId] 3978：常见问题，3979：知识库，3980：产品教程
+    + filter[id] - 筛选条件，唯一标识
+    + filter[title] - 筛选条件，文章标题
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
++ Response 200 (application/json)
+
+        {
+          "meta": {
+            "totalPages": 10,
+            "totalElements": 20,
+            "size": 2,
+            "number": 1,
+            "numberOfElements": 2,
+            "first": true,
+            "last": false,
+            "sort": [
+              {
+                "direction": "DESC",
+                "property": "modified",
+                "ignoreCase": false,
+                "nullHandling": "NATIVE",
+                "descending": true,
+                "ascending": false
+              }
+            ]
+          },
+          "links": {
+            "self": "/mp/topics?filter=&filter[forumId]=7&filter[categoryId]=3979&fields[topics]=id,title,categoryId,creator,created,modified,modifier&sort=-modified&page[number]=1&page[size]=2",
+            "first": "/mp/topics?filter=&filter[forumId]=7&filter[categoryId]=3979&fields[topics]=id,title,categoryId,creator,created,modified,modifier&sort=-modified&page[number]=1&page[size]=2",
+            "next": "/mp/topics?filter=&filter[forumId]=7&filter[categoryId]=3979&fields[topics]=id,title,categoryId,creator,created,modified,modifier&sort=-modified&page[number]=2&page[size]=2",
+            "last": "/mp/topics?filter=&filter[forumId]=7&filter[categoryId]=3979&fields[topics]=id,title,categoryId,creator,created,modified,modifier&sort=-modified&page[number]=10&page[size]=2"
+          },
+          "data": [
+            {
+              "id": 995409,
+              "creator": 0,
+              "modifier": 0,
+              "created": "2018-01-17 20:07:00",
+              "modified": "2018-04-04 14:02:05",
+              "categoryId": 3979,
+              "title": "EQ均衡器调节方法",
+              "imageSingle": false,
+              "imageRotation": false,
+              "liked": 0,
+              "favorite": 0
+            },
+            {
+              "id": 995476,
+              "creator": 0,
+              "modifier": 0,
+              "created": "2018-01-17 20:07:23",
+              "modified": "2018-04-04 14:02:04",
+              "categoryId": 3979,
+              "title": "音频码率",
+              "imageSingle": false,
+              "imageRotation": false,
+              "liked": 0,
+              "favorite": 0
+            }
+          ]
+        }
+### (GET)文章详情 [/mp/topics/{id}]
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
+### 增加/修改 文章 [POST]
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
++ Parameters
+    + forumId 必填，7：美频技术支持 8：美频行业新闻
+    + categoryId 当forumId=7时必填，3978：常见问题，3979：知识库，3980：产品教程，当forumId=8时不填
+    + mp.type 必填，0：图文，1：视频
+    + mp.mpCategoryId
+    + post.title - 必填
+    + post.description
+    + post.content - 必填
+    + posts.tags
+    + document.postDate
+    + document.author
+    + attachments
+    + id 修改时必填，添加时必不填
+    + post.creator - 修改时必填，添加时必不填
+
++ 新增常见问题Request (application/json)
+    
+        {
+            "data":{
+                "forumId":7,
+                "categoryId":3978,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"问题文章1",
+                    "description":"问题文章1",
+                    "content":"问题文章1",
+                    "tags":[
+                            "问题","文章","测试"
+                        ]
+                }
+            }
+        }
++ 新增知识库Request (application/json)
+
+        {
+            "data":{
+                "forumId":7,
+                "categoryId":3979,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"知识库文章1",
+                    "description":"知识库文章1",
+                    "content":"知识库文章1",
+                    "tags":[
+                            "知识库","文章","测试"
+                        ]
+                }
+            }
+        }
++ 新增产品教程Request (application/json)
+
+        {
+            "data":{
+                "forumId":7,
+                "categoryId":3980,
+                "mp":{
+                    "type":0,
+                    "mpCategoryId":173
+                },
+                "post":{
+                    "title":"产品教程文章1",
+                    "description":"产品教程文章1",
+                    "content":"产品教程文章1",
+                    "tags":[
+                            "产品教程","文章","测试"
+                        ]
+                }
+            }
+        }
++ 新增行业新闻Request (application/json)
+
+        {
+            "data":{
+                "forumId":8,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"行业新闻文章1",
+                    "description":"行业新闻文章1",
+                    "content":"行业新闻文章1",
+                    "tags":[
+                            "行业","新闻","测试"
+                        ]
+                }
+            }
+        }
++ 修改常见问题Request (application/json)
+    
+        {
+            "data":{
+                "id":996853,
+                "forumId":7,
+                "categoryId":3978,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"问题文章1",
+                    "description":"问题文章1",
+                    "content":"问题文章1",
+                    "tags":[
+                            "问题","文章","测试"
+                        ],
+                    "creator":1031
+                }
+            }
+        }
++ 修改知识库Request (application/json)
+
+        {
+            "data":{
+                "id":996855,
+                "forumId":7,
+                "categoryId":3979,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"知识库文章1",
+                    "description":"知识库文章1",
+                    "content":"知识库文章1",
+                    "tags":[
+                            "知识库","文章","测试"
+                        ],
+                    "creator":1031
+                }
+            }
+        }
++ 修改产品教程Request (application/json)
+
+        {
+            "data":{
+                "id":996856,
+                "forumId":7,
+                "categoryId":3980,
+                "mp":{
+                    "type":0,
+                    "mpCategoryId":173
+                },
+                "post":{
+                    "title":"产品教程文章1",
+                    "description":"产品教程文章1",
+                    "content":"产品教程文章1",
+                    "tags":[
+                            "产品教程","文章","测试"
+                        ],
+                    "creator":1031
+                }
+            }
+        }
++ 修改行业新闻Request (application/json)
+
+        {
+            "data":{
+                "id":996857,
+                "forumId":8,
+                "mp":{
+                    "type":0
+                },
+                "post":{
+                    "title":"行业新闻文章1",
+                    "description":"行业新闻文章1",
+                    "content":"行业新闻文章1",
+                    "tags":[
+                            "行业","新闻","测试"
+                        ],
+                    "creator":1031
+                }
+            }
+        }
+### 删除文章 [DELETE] /mp/topics/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
++ Response 204 (application/json)
