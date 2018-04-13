@@ -653,6 +653,7 @@
 + Parameters
     + forumId 必填，7：美频技术支持 8：美频行业新闻
     + categoryId 当forumId=7时必填，3978：常见问题，3979：知识库，3980：产品教程，当forumId=8时不填
+    + seedId 必填123
     + mp.type 必填，0：图文，1：视频
     + mp.mpCategoryId
     + post.title - 必填
@@ -670,6 +671,7 @@
         {
             "data":{
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3978,
                 "mp":{
                     "type":0
@@ -689,6 +691,7 @@
         {
             "data":{
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3979,
                 "mp":{
                     "type":0
@@ -708,6 +711,7 @@
         {
             "data":{
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3980,
                 "mp":{
                     "type":0,
@@ -728,6 +732,7 @@
         {
             "data":{
                 "forumId":8,
+                "seedId":123,
                 "mp":{
                     "type":0
                 },
@@ -747,6 +752,7 @@
             "data":{
                 "id":996853,
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3978,
                 "mp":{
                     "type":0
@@ -768,6 +774,7 @@
             "data":{
                 "id":996855,
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3979,
                 "mp":{
                     "type":0
@@ -789,6 +796,7 @@
             "data":{
                 "id":996856,
                 "forumId":7,
+                "seedId":123,
                 "categoryId":3980,
                 "mp":{
                     "type":0,
@@ -811,6 +819,7 @@
             "data":{
                 "id":996857,
                 "forumId":8,
+                "seedId":123,
                 "mp":{
                     "type":0
                 },
