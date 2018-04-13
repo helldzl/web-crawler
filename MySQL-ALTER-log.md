@@ -5,6 +5,42 @@
 ---
 # 2.3.0
 
+### 2018年4月13日
+> article(新建短链接表和封面图表)
+```sql
+CREATE TABLE `short_urls` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `origin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reviews` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '浏览次数',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_idx` (`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1474 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `cover_images` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `attachment_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '关联attachments表',
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '图片地址',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '图标题',
+  `display_order` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `extension` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '拓展名',
+  `filesize` int(11) NOT NULL DEFAULT '0' COMMENT '大小',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `topic_id_enabled_idx` (`topic_id`,`enabled`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+```
+
 ### 2018年3月29日
 > article(新建美频的6张表)
 ```sql
