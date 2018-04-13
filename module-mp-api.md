@@ -100,7 +100,7 @@
 + 推荐娱乐新闻 (GET)/mp/topics/anchorRecommends
     + Description  
         + page[size]不能小于filter[seedIds]的个数
-+ 推荐行业新闻 (GET)/topics/search?filter[forum]=8&fiter[items.saleRank:gt]=0&agg[size]=-1&sort=-items.saleRank
++ 推荐行业新闻 (GET)/topics/search?filter[forum]=8&fiter[items.upTimes:gt]=0&agg[size]=-1&sort=-items.upTimes
 
 ## 技术支持模块
 
