@@ -91,7 +91,7 @@
     + params
         + filter[forum] 必填8
         + page[size] 根据需求填写
-        + fromDays 必填7
+        + fromDays 必填30
 + 轮播图下方数据 (GET)/topics/search?filter[forum]=6,8&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
     + params
         + filter[forum] 必填6,8
