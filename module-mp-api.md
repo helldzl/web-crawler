@@ -86,10 +86,12 @@
     + params
         + filter[forum] 必填6
         + page[size] 根据需求填写
+        + fromDays 必填7
 + 行业新闻轮播图 /mp/topics/hotnews
     + params
         + filter[forum] 必填8
         + page[size] 根据需求填写
+        + fromDays 必填7
 + 轮播图下方数据 (GET)/topics/search?filter[forum]=6,8&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
     + params
         + filter[forum] 必填6,8
