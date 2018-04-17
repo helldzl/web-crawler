@@ -646,6 +646,115 @@
 + Description
     + [MUST] Authenticated
     + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Response 200 (application/json)
+
+        {
+          "data": {
+            "id": 995249,
+            "creator": 0,
+            "modifier": 0,
+            "created": "2018-03-14 13:20:55",
+            "modified": "2018-04-04 14:02:20",
+            "forumId": 7,
+            "categoryId": 3980,
+            "title": "6NANO 硬件安装",
+            "topicType": 0,
+            "reviews": 0,
+            "replies": 0,
+            "thumbsUp": 0,
+            "thumbsDown": 0,
+            "boost": 1,
+            "trainSample": 0,
+            "locked": 0,
+            "moderated": 0,
+            "categoryPath": "3980",
+            "similarities": [],
+            "rotations": [],
+            "images": [],
+            "audios": [],
+            "videos": [],
+            "coverImages": [],
+            "from": {
+              "id": 975314,
+              "topicId": 995249,
+              "seedId": 123,
+              "origin": "http://www.91yp.cn/index.php?m=content&c=index&a=show&catid=49&id=35",
+              "rating": 0,
+              "reviews": 0,
+              "thumbsUp": 0,
+              "host": "http://www.91yp.cn",
+              "source": "美频",
+              "image": "http://static.budee.com/yyren/image/channel/91yp.jpg",
+              "channelId": 100
+            },
+            "document": {
+              "postDate": "2018-03-14 00:00:00",
+              "author": "美频",
+              "brands": []
+            },
+            "mp": {
+              "id": 188,
+              "type": 0,
+              "topicId": 995249,
+              "upTimes": 0,
+              "mpCategoryId": 204
+            },
+            "mpdownloads": [],
+            "mpCategory": {
+              "id": 204,
+              "parentId": 18,
+              "type": 2,
+              "title": "硬件\\驱动\\机架\\系统",
+              "parent": {
+                "id": 18,
+                "parentId": 1,
+                "type": 1,
+                "title": "6NANO",
+                "parent": {
+                  "id": 1,
+                  "parentId": 0,
+                  "type": 0,
+                  "title": "声卡"
+                },
+                "brandId": 6,
+                "brandName": "紫罗兰"
+              }
+            },
+            "imageSingle": false,
+            "imageRotation": false,
+            "liked": 0,
+            "favorite": 0,
+            "post": {
+              "id": 1388640,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "modified": "2018-04-04 14:02:20",
+              "parentId": 0,
+              "topicId": 995249,
+              "priority": 0,
+              "language": 1,
+              "categories": [
+                "常用教程"
+              ],
+              "tags": [],
+              "features": [
+                {
+                  "_name": "systems",
+                  "_value": "WinXP/Win7/Win8/Vista"
+                }
+              ],
+              "title": "6NANO 硬件安装",
+              "description": "将文件下载放在桌面上，不要解压，不要安装，联系客服人员。",
+              "content": "<div> \n \n <h5>软件简介</h5> \n <div>  \n  <div> \n   <img src=\"http://static.budee.com/yyren/image/14/50/3280484.jpg\"> \n   <br> \n   <br> &nbsp; \n  </div> \n </div> \n <h5>下载地址</h5> \n <div> \n  <ul> \n   <li><a href=\"http://91yp-huadong2-a.91yp.cn/Release/Full_91Setup_9.0.0.6.exe\"><img src=\"http://static.budee.com/yyren/image/13/50/3280288.jpg\"></a></li> \n   <li>将文件下载放在桌面上，不要解压，不要安装，联系客服人员。</li> \n  </ul> \n  <div>  \n  </div> \n </div> \n</div>",
+              "postTypeValue": "爬取",
+              "postType": 1
+            },
+            "thumbs": 0,
+            "forumName": "美频技术支持",
+            "topicTypeValue": "正常"
+          }
+        }
 
 ### 增加/修改 文章 [POST]
 
