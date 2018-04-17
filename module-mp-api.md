@@ -104,6 +104,7 @@
         + page[size]不能小于filter[seedIds]的个数
 + 推荐行业新闻 (GET)/topics/search?filter[forum]=8&fiter[items.upTimes:gt]=0&agg[size]=-1&sort=-items.upTimes
 
+
 ## 技术支持模块
 
 ### 首页
@@ -665,29 +666,55 @@
     + document.postDate
     + document.author
     + attachments
+        + id 图片id
+    + coverImages
+        + id 图片id
+        + displayOrder 排序
     + id 修改时必填，添加时必不填
     + post.creator - 修改时必填，添加时必不填
 
 + 新增常见问题Request (application/json)
     
         {
-            "data":{
-                "forumId":7,
-                "seedId":123,
-                "categoryId":3978,
-                "mp":{
-                    "type":0
-                },
-                "post":{
-                    "title":"问题文章1",
-                    "description":"问题文章1",
-                    "content":"问题文章1",
-                    "tags":[
-                            "问题","文章","测试"
+              "data":{
+                  "forumId":7,
+                  "seedId":123,
+                  "categoryId":3978,
+                  "mp":{
+                      "type":0
+                  },
+                  "post":{
+                      "title":"问题文章2",
+                      "description":"问题文章2",
+                      "content":"问题文章1",
+                      "tags":[
+                              "问题2","文章","测试"
+                          ]
+                  },
+                  "attachments":[
+                        {
+                            "id":3280763
+                        },
+                        {
+                            "id":3280764
+                        }
+                      ],
+                    "coverImages":[
+                            {
+                                "id":3280763,
+                                "displayOrder":1
+                            },
+                            {
+                                "id":3280764,
+                                "displayOrder":3
+                            },
+                            {
+                                "id":3280765,
+                                "displayOrder":2
+                            }
                         ]
-                }
-            }
-        }
+              }
+          }
 + 新增知识库Request (application/json)
 
         {
