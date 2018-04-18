@@ -978,3 +978,178 @@
     + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
 
 + Response 204 (application/json)
+
+## 快速下载管理
+
+### 增加快速下载 [POST] /mpDownloads
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
++ Parameters
+    + type - 必填
+    + title - 必填
+    + description
+    + displayOrder
+    + image
+    + link - 必填
++ 新增Request (application/json)
+
+        {
+            "data":{
+                "type":0,
+                "title":"yin'pin音频 zhu'shou助手",
+                "displayOrder":2,
+                "link":"http://static.budee.com/yyren/image/nginx-1.8.0.tar.gz"
+            }
+        }
++ Response 201 (application/json)
+
+        {
+          "data": {
+            "id": 23,
+            "type": "mpDownloads"
+          }
+        }
+### 修改快速下载 [PATCH] /mpDownloads/{id}
+
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+
++ Parameters
+    + type - 必填
+    + title - 必填
+    + description
+    + displayOrder
+    + image
+    + link - 必填
++ 修改Request (application/json)
+
+        {
+            "data":{
+                "type":0,
+                "title":"xgfdsgdfsgdfsgdfgafasf'pin音频 zhu'shou助手",
+                "displayOrder":2,
+                "link":"http://static.budee.com/yyren/image/nginx-1.8.0.tar.gz"
+            }
+        }
++ Response 200 (application/json)
+
+### 快速下载列表 [GET] /mpDownloads?filter[type]=1&sort=-modified
+
++ Parameters
+    + type
+    + id
+    + title
+    + sort -modified(从新到旧) | modified(从旧到新)
++ Response 200 (application/json)
+
+        {
+          "meta": {
+            "totalPages": 3,
+            "totalElements": 24,
+            "size": 10,
+            "number": 1,
+            "numberOfElements": 10,
+            "first": true,
+            "last": false,
+            "sort": [
+              {
+                "direction": "DESC",
+                "property": "modified",
+                "ignoreCase": false,
+                "nullHandling": "NATIVE",
+                "ascending": false,
+                "descending": true
+              }
+            ]
+          },
+          "links": {
+            "self": "/mpDownloads?filter[type]=1&sort=-modified&page[number]=1&page[size]=10",
+            "first": "/mpDownloads?filter[type]=1&sort=-modified&page[number]=1&page[size]=10",
+            "next": "/mpDownloads?filter[type]=1&sort=-modified&page[number]=2&page[size]=10",
+            "last": "/mpDownloads?filter[type]=1&sort=-modified&page[number]=3&page[size]=10"
+          },
+          "data": [
+            {
+              "id": 24,
+              "enabled": 1,
+              "creator": 1031,
+              "modifier": 1031,
+              "created": "2018-04-18 11:46:17",
+              "modified": "2018-04-18 11:46:52",
+              "type": 0,
+              "displayOrder": 2,
+              "title": "xgfdsgdfsgdfsgdfgafasf'pin音频 zhu'shou助手",
+              "link": "http://static.budee.com/yyren/image/nginx-1.8.0.tar.gz",
+              "times": 0
+            },
+            {
+              "id": 23,
+              "enabled": 1,
+              "creator": 1031,
+              "modifier": 1031,
+              "created": "2018-04-18 11:42:23",
+              "modified": "2018-04-18 11:42:23",
+              "type": 0,
+              "displayOrder": 2,
+              "title": "yin'pin音频 zhu'shou助手",
+              "link": "http://static.budee.com/yyren/image/nginx-1.8.0.tar.gz",
+              "times": 0
+            },
+            {
+              "id": 1,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "created": "2018-04-13 17:06:42",
+              "modified": "2018-04-13 17:06:42",
+              "type": 0,
+              "displayOrder": 0,
+              "title": "91音频助手",
+              "description": "91音频助手下载",
+              "image": "http://static.budee.com/91yp/uploadfile/2015/0622/20150622030226512.png",
+              "link": "http://static.budee.com/91yp/Full_91Setup_9.0.0.2.exe",
+              "times": 0
+            },
+            {
+              "id": 2,
+              "enabled": 1,
+              "creator": 0,
+              "modifier": 0,
+              "created": "2018-04-13 17:06:42",
+              "modified": "2018-04-13 17:06:42",
+              "type": 1,
+              "displayOrder": 0,
+              "title": "数字签名WIN7 32位",
+              "description": "驱动下载",
+              "link": "https://download.microsoft.com/download/3/7/4/37473F39-5728-4153-9A25-64C09DE9ED52/Windows6.1-KB3033929-x86.msu",
+              "times": 0
+            }
+          ]
+        }
+### 快速下载详情 [GET] /mpDownloads/{id}
++ Response 200 (application/json)
+
+        {
+          "data": {
+            "id": 24,
+            "enabled": 1,
+            "creator": 1031,
+            "modifier": 1031,
+            "created": "2018-04-18 11:46:17",
+            "modified": "2018-04-18 11:46:52",
+            "type": 0,
+            "displayOrder": 2,
+            "title": "xgfdsgdfsgdfsgdfgafasf'pin音频 zhu'shou助手",
+            "link": "http://static.budee.com/yyren/image/nginx-1.8.0.tar.gz",
+            "times": 0
+          }
+        }
+### 删除快速下载 [DELETE] /mpDownloads/{id}
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Response 204 (application/json)
