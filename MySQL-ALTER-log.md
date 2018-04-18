@@ -4,7 +4,26 @@
 
 ---
 # 2.3.0
+### 2018年4月18日
+> article(重建封面图表)
+```sql
+CREATE TABLE `cover_images` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `attachment_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '关联attachments表',
+  `display_order` int(10) NOT NULL DEFAULT '0' COMMENT '排序',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_id_att_id_unique` (`topic_id`,`attachment_id`) USING BTREE,
+  KEY `topic_id_enabled_idx` (`topic_id`,`enabled`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+```
 ### 2018年4月13日
 > article(新建短链接表和封面图表)
 ```sql
