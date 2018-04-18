@@ -1153,3 +1153,18 @@
     + [MUST] Authenticated
     + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
 + Response 204 (application/json)
+
+### 文件上传 [POST] /admin/Attachments/uploadFile
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
+    + 文件不能超过10M
+    + 格式限定：exe | zip | rar
++ Parameters
+    + type 必填 0/1/2 : 音频助手/驱动/软件
+    + file 必填
++ Response 200 (application/json)
+    
+        {
+          "data": "upload successful!"
+        }
