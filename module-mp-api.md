@@ -979,6 +979,14 @@
 
 + Response 204 (application/json)
 
+### 置顶文章 [GET] /mp/topics/top/{id}?upTimes=1
++ Description
+    + [MUST] Authenticated
+    + [MUST] ROLE_ADMIN | MP_ROLE_ADMIN
++ Parameters
+    + upTimes - 置顶系数，正数 | 负数
++ Response 200 (application/json)
+
 ## 快速下载管理
 
 ### 增加快速下载 [POST] /mpDownloads
