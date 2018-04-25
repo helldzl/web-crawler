@@ -158,6 +158,7 @@
 + Parameters
     + filter[id]
     + filter[title]
+        + 模糊查询示例：filter[title:like]=%25ic%25 （'%25'为'%'的转义）
 
 + Response 200 (application/json)
 
@@ -332,6 +333,7 @@
 + Parameters
     + filter[id]
     + filter[title]
+        + 模糊查询示例：filter[title:like]=%25声卡%25 （'%25'为'%'的转义）
     + page[number]
     + page[size]
 
@@ -392,6 +394,7 @@
     + filter[parentId]
     + filter[id]
     + filter[title]
+        + 模糊查询示例：filter[title:like]=%25micu%25 （'%25'为'%'的转义）
     + filter[brandId]
     + page[number]
     + page[size]
@@ -579,6 +582,7 @@
     + filter[categoryId] 3978：常见问题，3979：知识库，3980：产品教程
     + filter[id] - 筛选条件，唯一标识
     + filter[title] - 筛选条件，文章标题
+        + 模糊查询示例：filter[title:like]=%25麦克风%25 （'%25'为'%'的转义）
 
 + Description
     + [MUST] Authenticated
@@ -1048,9 +1052,10 @@
 ### 快速下载列表 [GET] /mpDownloads?filter[type]=1&sort=-modified
 
 + Parameters
-    + type
-    + id
-    + title
+    + filter[type]
+    + filter[id]
+    + filter[title]
+        + 模糊查询示例：filter[title:like]=%25麦克风%25 （'%25'为'%'的转义）
     + sort -modified(从新到旧) | modified(从旧到新)
 + Response 200 (application/json)
 
