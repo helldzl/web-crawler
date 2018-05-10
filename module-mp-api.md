@@ -154,7 +154,7 @@
 + params
     + size 每个分类展示的下载个数
 
-### 根据条件筛选（适用于快速下载页·热门下载|最新下载） (GET) /mpDownloads?filter[type]=1&page[size]=15&sort=-times
+### 根据条件筛选（适用于快速下载页·热门下载|最新下载） (GET) /mpDownloads?&page[size]=15&sort=-times
 + params 
     + times 下载次数
     + created 创建时间
