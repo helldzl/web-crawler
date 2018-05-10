@@ -8,6 +8,8 @@
     + 后台品牌管理api
 + 2018年4月11日
     + 后台分类管理api
++ 2018年5月10日
+    + 快速下载改版
 
 + Data
     + mpBrands - 美频品牌
@@ -148,17 +150,16 @@
 
 ## 快速下载
 
-### 三个类别一起查出来 （适用于首页|技术支持页|搜索结果页|快速下载页·全部下载） (GET)/mpDownloads/fast?assistantsSize=10&driveSize=10&softwareSize=10
+### 三个类别一起查出来 （适用于首页|技术支持页|搜索结果页|快速下载页·全部下载） (GET)/mpDownloads/fast?size=2
 + params
-    + assistantsSize 91助手个数
-    + driveSize 驱动个数
-    + softwareSize 常用软件个数
+    + size 每个分类展示的下载个数
 
 ### 根据条件筛选（适用于快速下载页·热门下载|最新下载） (GET) /mpDownloads?filter[type]=1&page[size]=15&sort=-times
 + params 
-    + filter[type] 0:91助手下载，1：驱动下载，2：常用软件下载
     + times 下载次数
     + created 创建时间
+    
+### 更新下载次数（点击下载按钮触发）(GET)/mpDownloads/times/{id}
 
 # 后台
 ## 品牌管理 [/mpBrands]
