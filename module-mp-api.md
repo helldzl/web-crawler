@@ -150,9 +150,10 @@
 
 ## 快速下载
 
-### 三个类别一起查出来 （适用于首页|技术支持页|搜索结果页|快速下载页·全部下载） (GET)/mpDownloads/fast?size=2
+### 三个类别一起查出来 （适用于首页|技术支持页|搜索结果页|快速下载页·全部下载） (GET)/mpDownloads/fast?categorySize=10&size=2
 + params
-    + size 每个分类展示的下载个数
+    + size 每个分类展示的下载个数，默认值10
+    + categorySize 要展示的分类的个数，默认值3
 
 ### 根据条件筛选（适用于快速下载页·热门下载|最新下载） (GET) /mpDownloads?&page[size]=15&sort=-times
 + params 
