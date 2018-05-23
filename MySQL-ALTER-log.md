@@ -2,6 +2,15 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
+# 2.4.0
+### 2018年5月23日
+> article.topics_document (topics_document增加type、original)
+```sql
+ALTER TABLE `mifan_article`.`topics_document`
+ADD COLUMN `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '主题类型(0：图文，1：视频，2：音频，3：音视频混合)',
+ADD COLUMN `original` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否原创 0：否，1：是';
+
+```
 ---
 # 2.3.0
 ### 2018年4月18日
