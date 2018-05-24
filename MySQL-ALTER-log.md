@@ -12,8 +12,18 @@ ADD COLUMN `wx` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '区分： 0:�
 ALTER TABLE `mifan_article`.`topics_document`
 ADD COLUMN `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '主题类型(0：图文，1：视频，2：音频，3：音视频混合)',
 ADD COLUMN `original` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否原创 0：否，1：是';
-
 ```
+
+### 2018年5月21日
+> wxrank.seeds (seeds增加article_seed_id字段)，wxrank.topics (topics增加article_topic_id)
+```sql
+ALTER TABLE `mifan_wxrank`.`seeds`
+ADD COLUMN `article_seed_id` bigint unsigned  COMMENT 'seed 与article的seed表 id对应表';
+
+ALTER TABLE `mifan_wxrank`.`topics`
+ADD COLUMN `article_topic_id` bigint unsigned  COMMENT '与article topic表中对应id';
+```
+
 ---
 # 2.3.0
 ### 2018年4月18日
