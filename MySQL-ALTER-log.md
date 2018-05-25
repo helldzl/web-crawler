@@ -3,6 +3,13 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 # 2.4.0
+### 2018年5月25日
+> wxrank.topics_attachments (topics_attachments增加article_topic_id字段)
+```sql
+ALTER TABLE `topics_attachments`
+ADD COLUMN `article_topic_id`  bigint UNSIGNED NULL COMMENT '图片发送给article之后，开始更新该表，定期维护' AFTER `topic_id`;
+```
+
 ### 2018年5月23日
 > article.seeds (seeds增加wx字段)，article.topics_document (topics_document增加type、original)
 ```sql
