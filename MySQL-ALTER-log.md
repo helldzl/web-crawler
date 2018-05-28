@@ -3,6 +3,14 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 # 2.4.0
+### 2018年5月28日
+> wxrank.seeds (seeds增加logo字段)
+```sql
+ALTER TABLE `seeds`
+ADD COLUMN `logo`  varchar(255) NULL COMMENT '公众号logo'  AFTER `biz`;
+```
+
+
 ### 2018年5月25日
 > wxrank.topics_attachments (topics_attachments增加article_topic_id字段)
 ```sql
