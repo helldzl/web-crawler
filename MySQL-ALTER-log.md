@@ -3,6 +3,198 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 # 2.4.0
+### 2018年5月29日
+> wx(微信星榜初始化)
+```sql
+CREATE TABLE `wetchat_mobile_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mobile_id` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '手机唯一标识符',
+  `state` tinyint(4) unsigned DEFAULT NULL COMMENT '状态',
+  `script_no` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '脚本编号（是那个脚本执行的）',
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '内容  （开始执行什么了）',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `wechat_comment` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `super_id` bigint(20) unsigned DEFAULT '0' COMMENT '评论的父id',
+  `topic_id` bigint(20) unsigned NOT NULL COMMENT '主题id',
+  `comment_thumbs_up` bigint(20) DEFAULT NULL COMMENT '评论点赞数',
+  `comment_content` text COLLATE utf8mb4_unicode_ci COMMENT '评论内容',
+  `comment_author` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '评论作者',
+  `enabled` tinyint(4) unsigned DEFAULT '1',
+  `creator` bigint(4) unsigned DEFAULT '0' COMMENT '创建人',
+  `created` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `topics_fetch` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `topic_id` bigint(20) unsigned NOT NULL COMMENT '主题ID',
+  `seed_id` bigint(20) unsigned NOT NULL COMMENT '种子ID',
+  `origin` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '来源URL  让以后再次访问使用',
+  `origin_hash` bigint(20) NOT NULL DEFAULT '0' COMMENT '来源URL HASH',
+  `reviews` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '阅读数',
+  `thumbs_up` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞数',
+  `comment_total` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '回复数（评论数）',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_id_idx` (`topic_id`) USING BTREE,
+  KEY `seed_id_idx` (`seed_id`) USING BTREE,
+  KEY `origin_hash_idx` (`origin_hash`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `topics_attachments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `topic_id` bigint(20) unsigned NOT NULL COMMENT '主题ID',
+  `article_topic_id` bigint(20) unsigned DEFAULT NULL COMMENT '图片发送给article之后，开始更新该表，定期维护',
+  `attachment_id` bigint(20) unsigned NOT NULL COMMENT '附件ID',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '启用/禁用',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_id_attachment_id_unique` (`topic_id`,`attachment_id`) USING BTREE,
+  KEY `attachment_id_idx` (`attachment_id`) USING BTREE,
+  KEY `topic_id_enabled_attachment_id_idx` (`topic_id`,`enabled`,`attachment_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `topics` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `article_topic_id` bigint(20) unsigned DEFAULT NULL COMMENT '与article topic表中对应id',
+  `seed_id` bigint(20) unsigned NOT NULL,
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '主题类型(0：图文，1：视频，2：音频，3：音视频混合)',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '标题',
+  `title_hash` bigint(20) NOT NULL DEFAULT '0' COMMENT '标题HASH',
+  `content` mediumtext CHARACTER SET utf8mb4 NOT NULL COMMENT '内容',
+  `author` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '作者',
+  `post_date` datetime NOT NULL COMMENT '发布日期',
+  `top` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否头条{1：是，0：否} ',
+  `original` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否原创 0：否，1：是',
+  `group_sign` bigint(20) unsigned NOT NULL COMMENT '分组标记',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '启用/禁用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `creator_enabled_modified_idx` (`creator`,`enabled`,`modified`) USING BTREE,
+  KEY `modified_idx` (`modified`) USING BTREE,
+  KEY `title_hash_idx` (`title_hash`) USING BTREE,
+  KEY `forum_id_train_sample_idx` (`type`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `seeds` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID 自增长',
+  `article_seed_id` bigint(20) unsigned DEFAULT NULL COMMENT 'seed 与article的seed表 id对应表',
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '微信号的名称',
+  `wechat_id` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '微信号wechat_id',
+  `biz` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公众号唯一识别符(唯一)',
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '公众号logo',
+  `func_intro` text COLLATE utf8mb4_unicode_ci COMMENT '功能介绍   ',
+  `account_type` tinyint(3) unsigned DEFAULT NULL COMMENT '订阅号0   服务号1',
+  `account_subject` tinyint(1) DEFAULT NULL COMMENT '企业   和    个人',
+  `company_name` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '企业全称',
+  `business_reg_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '工商执照注册号',
+  `service_tel` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '客服电话',
+  `company_type` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '企业类型',
+  `business_scope` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '经营范围',
+  `establish_date` date DEFAULT NULL COMMENT '企业成立日期',
+  `operating_period` date DEFAULT NULL COMMENT '企业经营期限',
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '地区',
+  `classify` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '分类',
+  `tag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '标签，每个标签使用逗号隔开',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '描述',
+  `update_rate` int(10) DEFAULT NULL COMMENT '更新频率',
+  `language` tinyint(1) DEFAULT NULL COMMENT '0中文  1英文',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '使能  0禁止  1启用',
+  `creator` bigint(20) unsigned DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `scheduled_job` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
+  `job_status` enum('NORMAL','EXCEPTIONAL','DONE') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DONE' COMMENT '任务状态',
+  `start_time` datetime DEFAULT NULL COMMENT '任务开始时间',
+  `end_time` datetime DEFAULT NULL COMMENT '任务结束时间',
+  `last_modified_time` datetime DEFAULT NULL COMMENT '最后更新时间',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '异常信息',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '任务描述',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `rank` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '类型，0：日榜 1:周榜 2：月榜',
+  `seed_id` bigint(20) unsigned NOT NULL COMMENT '来源标识',
+  `start_date` int(8) unsigned NOT NULL COMMENT '开始日期',
+  `end_date` int(8) unsigned NOT NULL COMMENT '结束日期',
+  `post_num` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '发布次数',
+  `topic_num` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文章数量',
+  `all_reviews` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '总阅读数',
+  `top_reviews` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '头条阅读数',
+  `max_reviews` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最高阅读数',
+  `all_praises` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '总点赞数',
+  `top_praises` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '头条点赞数',
+  `max_praises` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最高点赞数',
+  `star_index` double(10,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '米饭星指数',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `seed_type_start_unique` (`type`,`seed_id`,`start_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `attachments_fetch` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `attachment_id` bigint(20) unsigned NOT NULL COMMENT '附件ID',
+  `origin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '来源URL',
+  `origin_hash` bigint(20) NOT NULL COMMENT '来源URL HASH',
+  PRIMARY KEY (`id`),
+  KEY `attachment_id_idx` (`attachment_id`) USING BTREE,
+  KEY `origin_hash_idx` (`origin_hash`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `attachments` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `mime` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'MIME类型',
+  `filename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '附件名称',
+  `extension` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '扩展名称',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '附件标题',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '附件描述',
+  `extra` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '额外信息',
+  `filesize` int(11) NOT NULL DEFAULT '0' COMMENT '附件大小',
+  `download` int(11) NOT NULL DEFAULT '0' COMMENT '下载次数',
+  `retry` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '重试次数',
+  `group_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '分组  0为不放入封面的图片，1为可放入文章图片关联',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1' COMMENT '启用/禁用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `enabled_retry_idx` (`enabled`,`retry`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+```
+
 ### 2018年5月28日
 > wxrank.seeds (seeds增加logo字段)
 ```sql
