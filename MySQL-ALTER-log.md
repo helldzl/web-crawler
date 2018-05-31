@@ -3,12 +3,6 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 
 # 2.4.0
-### 2018年5月31日
-> wx.rank(添加star_order字段)
-```sql
-ALTER TABLE `rank`
-ADD COLUMN `star_order`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '米饭星指数排行（star_index*100）' AFTER `star_index`;
-```
 ### 2018年5月29日
 > wx(微信星榜初始化)
 ```sql
