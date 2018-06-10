@@ -1,6 +1,7 @@
 # 数据库修改记录
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
+# 2.4.0
 ### 2018年6月8日
 > wxrank.topics_attachments (topics_attachments增加retry字段)
 ```sql
@@ -8,8 +9,6 @@ ALTER TABLE `topics_attachments`
 ADD COLUMN `retry`  int UNSIGNED NOT NULL DEFAULT 0 COMMENT '重试次数，关联关系是否是在article保存次数' AFTER `attachment_id`;
 ```
 
-
-# 2.4.0
 ### 2018年5月29日
 > wx(微信星榜初始化)
 ```sql
