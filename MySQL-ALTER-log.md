@@ -2,6 +2,53 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+
+### 2018年6月15日
+> ucenter.activity_rosters (添加活动报名表)
+```sql
+CREATE TABLE `activity_rosters` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL COMMENT '用户标识',
+  `phone_number` varchar(11) NOT NULL COMMENT '电话号',
+  `full_name` varchar(50) CHARACTER SET utf8mb4 NOT NULL COMMENT '姓名',
+  `email` varchar(100) NOT NULL COMMENT '邮箱',
+  `city` varchar(50) NOT NULL COMMENT '城市',
+  `position` varchar(200) NOT NULL COMMENT '职位',
+  `job_nature` varchar(20) NOT NULL COMMENT '工作性质',
+  `job_years` varchar(20) NOT NULL COMMENT '工作年限',
+  `making_type` varchar(200) NOT NULL COMMENT '制作类型',
+  `hope_skill` varchar(20) NOT NULL COMMENT '希望学到的技术',
+  `hope_onsite` tinyint(1) unsigned NOT NULL,
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id_unique` (`user_id`),
+  UNIQUE KEY `phone_num_unique` (`phone_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+```
+
+> wxrank.regions (添加区域表)
+```sql
+CREATE TABLE `regions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `parent_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '父节点',
+  `title` varchar(100) NOT NULL COMMENT '区域名称',
+  `leaf` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否叶子节点 0：否 ，1：是',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+```
+
 ### 2018年6月8日
 > wxrank.topics_attachments (topics_attachments增加retry字段)
 ```sql
