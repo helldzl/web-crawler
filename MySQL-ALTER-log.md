@@ -4,6 +4,11 @@
 # 2.4.0
 
 ### 2018年6月15日
+> wxrank.seeds (添加二维码字段)
+```sql
+ALTER TABLE `seeds`
+ADD COLUMN `qr_code`  varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL COMMENT '二维码' AFTER `logo`;
+```
 > ucenter.activity_rosters (添加活动报名表)
 ```sql
 CREATE TABLE `activity_rosters` (
