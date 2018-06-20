@@ -22,8 +22,8 @@ CREATE TABLE `activity_rosters` (
   `job_nature` varchar(20) NOT NULL COMMENT '工作性质',
   `job_years` varchar(20) NOT NULL COMMENT '工作年限',
   `making_type` varchar(200) NOT NULL COMMENT '制作类型',
-  `hope_skill` varchar(20) NOT NULL COMMENT '希望学到的技术',
-  `hope_onsite` tinyint(1) unsigned NOT NULL,
+  `hope_skill` varchar(20) DEFAULT NULL COMMENT '希望学到的技术',
+  `hope_onsite` tinyint(1) unsigned DEFAULT NULL,
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -33,7 +33,7 @@ CREATE TABLE `activity_rosters` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id_unique` (`user_id`),
   UNIQUE KEY `phone_num_unique` (`phone_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ```
 
