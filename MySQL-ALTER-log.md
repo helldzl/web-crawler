@@ -2,6 +2,23 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年6月21日
+> wxrank.topics (topics增加article_topic_id 默认值，增加article_topic_id索引)
+```sql
+ALTER TABLE `topics`
+MODIFY COLUMN `article_topic_id`  bigint(20) UNSIGNED NULL DEFAULT 0 COMMENT '与article topic表中对应id' AFTER `id`,
+ADD INDEX `article_topic_id` (`article_topic_id`) USING BTREE ;
+```
+
+> wxrank.topics_attachments (topics_attachments增加article_topic_id 默认值0，增加article_topic_id索引)
+```sql
+ALTER TABLE `topics_attachments`
+MODIFY COLUMN `article_topic_id`  bigint(20) UNSIGNED NULL DEFAULT 0 COMMENT '图片发送给article之后，开始更新该表，定期维护' AFTER `topic_id`,
+ADD INDEX `article_topic_id` (`article_topic_id`) USING BTREE ;
+```
+
+
+
 
 ### 2018年6月15日
 > wxrank.seeds (添加二维码字段)
