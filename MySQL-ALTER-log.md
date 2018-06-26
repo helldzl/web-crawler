@@ -2,6 +2,57 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年6月26日
+> wxrank.seeds (修改地区、分类字段，删除标签字段)
+```sql
+ALTER TABLE `seeds`
+DROP COLUMN `tag`,
+DROP COLUMN `region`,
+DROP COLUMN `classify`,
+ADD COLUMN `region_id`  bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '地区' AFTER `operating_period`,
+ADD COLUMN `category_id`  bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '分类' AFTER `region_id`;
+```
+> wxrank (添加分类表categories)
+```sql
+CREATE TABLE `categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL COMMENT '公众号分类名',
+  `description` varchar(500) DEFAULT NULL COMMENT '分类描述',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+```
+> wxrank (添加标签表tags,公众号和标签关联表seeds_tags)
+```sql
+CREATE TABLE `tags` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL COMMENT '标签名',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `seeds_tags` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `seed_id` bigint(20) unsigned NOT NULL COMMENT '公众号标识',
+  `tag_id` bigint(20) unsigned NOT NULL COMMENT '标签标识',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `seed_tag_unique` (`seed_id`,`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
 ### 2018年6月21日
 > wxrank.topics (topics增加article_topic_id 默认值，增加article_topic_id索引)
 ```sql
