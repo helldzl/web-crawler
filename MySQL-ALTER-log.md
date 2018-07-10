@@ -2,6 +2,19 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年7月10日
+> wxrank (添加一个 mobile_wx 表)
+```sql
+CREATE TABLE `mobile_wx` (
+`id`  bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
+`mobile_id`  varchar(100) NOT NULL COMMENT '手机唯一标识符' ,
+`enabled`  tinyint UNSIGNED NOT NULL DEFAULT 1 COMMENT '使能  0禁止  1启用' ,
+`created`  datetime NOT NULL COMMENT '创建时间' ,
+`modified`  datetime NOT NULL COMMENT '修改时间' 
+);
+```
+
+
 ### 2018年6月26日
 > wxrank.seeds (修改地区、分类字段，删除标签字段)
 ```sql
