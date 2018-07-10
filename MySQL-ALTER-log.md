@@ -13,6 +13,11 @@ CREATE TABLE `mobile_wx` (
 `modified`  datetime NOT NULL COMMENT '修改时间' 
 );
 ```
+> wxrank.mobile_wx (mobile_id增加唯一索引)
+```sql
+ALTER TABLE `mobile_wx`
+ADD UNIQUE INDEX `mobile_id_unique` (`mobile_id`) USING BTREE ;
+```
 
 
 ### 2018年6月26日
