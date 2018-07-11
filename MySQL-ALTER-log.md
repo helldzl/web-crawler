@@ -18,6 +18,11 @@ CREATE TABLE `mobile_wx` (
 ALTER TABLE `mobile_wx`
 ADD UNIQUE INDEX `mobile_id_unique` (`mobile_id`) USING BTREE ;
 ```
+> wxrank.mobile_wx (增加一个wx_nickname)
+```sql
+ALTER TABLE `mobile_wx`
+ADD COLUMN `wx_nickname`  varchar(100) NOT NULL COMMENT '一个手机一个微信号，这个里面是微信昵称' AFTER `mobile_id`;
+```
 
 
 ### 2018年6月26日
