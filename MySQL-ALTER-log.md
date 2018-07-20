@@ -2,6 +2,67 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年7月20日
+> article (添加activities,activities_info,posters,poster_activity_images)
+```sql
+CREATE TABLE `activities` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '标题',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
+  `cover_plan` varchar(255) NOT NULL COMMENT '封面',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '活动状态，0:待开始,1:正在进行，2:已结束',
+  `start_date` datetime NOT NULL COMMENT '日程开始时间',
+  `end_date` datetime NOT NULL COMMENT '日程结束时间',
+  `activity_type` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '活动类型，0：线上活动；1：线下活动',
+  `banner` varchar(255) DEFAULT NULL COMMENT '横幅图片',
+  `activity_location` varchar(255) DEFAULT NULL COMMENT '活动地点 用逗号隔开',
+  `is_blank` tinyint(1) unsigned NOT NULL COMMENT '是否是外连接 0：否，1：是',
+  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '内容',
+  `blank` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '来源URL(外链接)',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '启用/禁用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `activities_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `activities_id` bigint(20) NOT NULL COMMENT '活动表ID',
+  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'logo图',
+  `sponsor` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '主办方信息',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+CREATE TABLE `posters` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(100) CHARACTER SET utf8mb4 NOT NULL COMMENT '标题',
+  `author` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '作者',
+  `cover_plan` varchar(255) NOT NULL COMMENT '封面图',
+  `post_time` datetime DEFAULT NULL COMMENT '发布时间',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '启用/禁止',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+CREATE TABLE `poster_activity_images` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `type` tinyint(1) NOT NULL COMMENT '图片类型 0：海报图，1：活动图',
+  `poster_activity_id` bigint(20) unsigned NOT NULL COMMENT '海报ID\\活动ID',
+  `image` varchar(255) DEFAULT NULL COMMENT '图片',
+  `description` varchar(255) DEFAULT NULL COMMENT '图片描述',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '启用/禁用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `FK_poster_activity_image` (`poster_activity_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+```
+
 ### 2018年7月10日
 > wxrank (添加一个 mobile_wx 表)
 ```sql
