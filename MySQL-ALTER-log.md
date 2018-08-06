@@ -2,6 +2,24 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年8月6日
+> wxrank.seeds 添加subject
+```sql
+ALTER TABLE `seeds`
+ADD COLUMN `添加subject`  varchar(100) DEFAULT NULL COMMENT '帐号主体' AFTER `account_subject`;
+```
+> wxrank.regions
+```sql
+ALTER TABLE `regions`
+ADD COLUMN `quotes`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '公众号引用的次数' AFTER `leaf`,
+ADD COLUMN `display_order`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '排序' AFTER `quotes`;
+```
+> wxrank.tags
+```sql
+ALTER TABLE `tags`
+MODIFY COLUMN `title`  varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标签名' AFTER `id`,
+ADD UNIQUE INDEX `title_unique` (`title`) USING BTREE ;
+```
 ### 2018年7月20日
 > article (添加activities,activities_info,posters,poster_activity_images)
 ```sql
