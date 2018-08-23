@@ -3,6 +3,12 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 ### 2018年8月23日
+> wxrank.attachments 添加md5
+```sql
+ALTER TABLE `attachments`
+ADD COLUMN `md5`  varchar(50) CHARACTER SET utf8mb4 NOT NULL DEFAULT '0' AFTER `extra`;
+```
+
 > wxrank.attachments_md5 增加一张表
 ```sql
 CREATE TABLE `attachments_md5` (
