@@ -2,6 +2,17 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年8月23日
+> wxrank.attachments_md5 增加一张表
+```sql
+CREATE TABLE `attachments_md5` (
+  `id` bigint(20) NOT NULL,
+  `md5` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '不良图片的md5,用于去重',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `md5_unique` (`md5`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
 ### 2018年8月6日
 > wxrank.seeds 添加subject
 ```sql
