@@ -2,6 +2,39 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年8月24日
+> wxrank.nlp_event 添加表nlp_event,并插入一行数据。
+```sql
+CREATE TABLE `nlp_event` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT 'nlp事件名称',
+  `samples` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '样本数量',
+  `result` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '结果',
+  `last_time` datetime NOT NULL,
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of nlp_event
+-- ----------------------------
+INSERT INTO `nlp_event` VALUES ('1', '分词', '0', null, '2018-08-24 10:11:17', '1', '0', '0', '0000-00-00 00:00:00', '2018-08-24 10:11:18');
+```
+
+> wxrank.attachments_md5 增加一张表
+```sql
+CREATE TABLE `attachments_md5` (
+  `id` bigint(20) NOT NULL,
+  `md5` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '不良图片的md5,用于去重',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `md5_unique` (`md5`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
 ### 2018年8月23日
 > wxrank.attachments 添加md5
 ```sql
