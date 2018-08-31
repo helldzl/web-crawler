@@ -2,6 +2,12 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年8月31日
+> wxrank.topics 添加transmit
+```sql
+ALTER TABLE `topics`
+ADD COLUMN `transmit `  tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '是否传送到artcile中，默认值为1  1为传送  0为不传送' AFTER `group_sign`;
+```
 ### 2018年8月24日
 > wxrank.nlp_event 添加表nlp_event,并插入一行数据。
 ```sql
