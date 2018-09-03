@@ -3,6 +3,19 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 ### 2018年9月3日
+> wxrank.categories 添加新列
+```sql
+ALTER TABLE `categories`
+ADD COLUMN `quotes`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '公众号引用次数' AFTER `title`,
+ADD COLUMN `display_order`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '排序' AFTER `quotes`;
+```
+> wxrank.tags 添加新列
+```sql
+ALTER TABLE `tags`
+ADD COLUMN `quotes`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '公众号引用次数' AFTER `title`,
+ADD COLUMN `display_order`  int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '排序' AFTER `quotes`;
+ADD COLUMN `is_show`  tinyint(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '1:展示,0:不展示' AFTER `display_order`;
+```
 > wxrank.topics 添加post_date为索引列
 ```sql
 ALTER TABLE `topics`
