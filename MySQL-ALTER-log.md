@@ -2,6 +2,29 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年9月3日
+> wxrank.topics 添加post_date为索引列
+```sql
+ALTER TABLE `topics`
+ADD INDEX `post_date_index` (`post_date`) ;
+```
+> wxrank.categories_tags 表新建
+```sql
+CREATE TABLE `categories_tags` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` bigint(20) unsigned NOT NULL COMMENT '分类标识',
+  `tag_id` bigint(20) unsigned NOT NULL COMMENT '标签标识',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `categoryId_tagId_unique` (`category_id`,`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+```
+
 ### 2018年8月31日
 > wxrank.topics 添加transmit
 ```sql
