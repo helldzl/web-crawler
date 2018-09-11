@@ -2,6 +2,13 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年9月11日
+> wxrank.topics 添加关键字字段
+```sql
+ALTER TABLE `topics`
+ADD COLUMN `key_words`  varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关键字' AFTER `content`;
+```
+
 ### 2018年9月3日
 > wxrank.categories 添加新列
 ```sql
