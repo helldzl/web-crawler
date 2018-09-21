@@ -2,6 +2,34 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年9月21日
+> article新建移除原因表，新建移除一原因与topic关联表
+```sql
+CREATE TABLE `topics_abandon` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `topic_id` bigint(20) unsigned NOT NULL COMMENT '文章ID',
+  `category_id` bigint(20) unsigned NOT NULL COMMENT '弃用分类ID',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_id_unique` (`topic_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `abandon_categories` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '分类名称',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '使能 0禁止 1启用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
 ### 2018年9月11日
 > wxrank.topics 添加关键字字段
 ```sql
