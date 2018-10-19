@@ -2,6 +2,39 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+### 2018年10月19日
+> wx新建自定义榜单
+```sql
+CREATE TABLE `custom_ranks` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '榜单名称',
+  `seed_num` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '公众号数量',
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '描述',
+  `reviews` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '阅读数',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '公开状态 0:不公开 1:公开',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '使能 0禁止 1启用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `custom_rank_seeds` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `custom_ranks_id` bigint(20) unsigned NOT NULL COMMENT '自定义榜单id',
+  `seed_id` bigint(20) unsigned NOT NULL COMMENT '公众号id',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '使能 0禁止 1启用',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '创建人',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '修改人',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+
 ### 2018年9月21日
 > article新建移除原因表，新建移除一原因与topic关联表
 ```sql
