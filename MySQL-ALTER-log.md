@@ -2,6 +2,40 @@
 
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
+
+### 2018年11月1日
+> wx.topics添加is_repeat字段
+```sql
+ALTER TABLE `topics`
+ADD COLUMN `is_repeat`  tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否重复，0/1:否/是' AFTER `transmit`;
+```
+> wx,创建topic_similar
+```sql
+CREATE TABLE `topic_similar` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `target_id` bigint(20) unsigned NOT NULL,
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_target_unique_idx` (`topic_id`,`target_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+> wx,创建hamming_distances
+```sql
+CREATE TABLE `hamming_distance` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `distance` int(10) unsigned NOT NULL,
+  `theme_id` bigint(20) unsigned NOT NULL,
+  `target_id` bigint(20) unsigned NOT NULL,
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `theme_id_target_unique` (`theme_id`,`target_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
+
 ### 2018年10月19日
 > wx新建自定义榜单
 ```sql
