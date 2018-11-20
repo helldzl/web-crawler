@@ -3,6 +3,13 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 
+### 2018年11月20日
+> wxrank.seeds 添加forum_id字段
+```sql
+ALTER TABLE `seeds`
+ADD COLUMN `forum_id`  tinyint NOT NULL DEFAULT 3 AFTER `article_seed_id`;
+```
+
 ### 2018年11月1日
 > wx.topics添加is_repeat字段
 ```sql
