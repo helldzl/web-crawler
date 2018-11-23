@@ -10,6 +10,8 @@
     + 后台分类管理api
 + 2018年5月10日
     + 快速下载改版
++ 2018年11月23日
+    + 新闻页需求变更
 
 + Data
     + mpBrands - 美频品牌
@@ -94,16 +96,29 @@
     + page[size] 根据需求填写
 
 ### 新闻页 
-+ 娱乐轮播图 (GET)/mp/topics/hotnews
-    + params
-        + filter[forum] 必填6
-        + page[size] 根据需求填写
-        + fromDays 必填7
-+ 行业新闻轮播图 /mp/topics/hotnews
-    + params
-        + filter[forum] 必填8
-        + page[size] 根据需求填写
-        + fromDays 必填30
++ 20181123版说明：返回的数据与搜索接口结构一致
++ 娱乐轮播图 
+    + ~~旧版(GET)/mp/topics/hotnews~~
+        + params
+            + filter[forum] 必填6
+            + page[size] 根据需求填写
+            + fromDays 必填7
+    + 20181123版版 (GET) /mp/topics/featurednews
+        + params
+            + filter[forum] 必填6
+            + page[size] 根据需求填写
+            + fromDays 必填7 
++ 行业新闻轮播图 
+    + ~~旧版/mp/topics/hotnews~~
+        + params
+            + filter[forum] 必填8
+            + page[size] 根据需求填写
+            + fromDays 必填30
+    + 20181123版版(GET) /mp/topics/featurednews
+        + params
+            + filter[forum] 必填8
+            + page[size] 根据需求填写
+            + fromDays 必填7 
 + 轮播图下方数据 (GET)/topics/search?filter[forum]=6,8&page[number]=1&page[size]=10&agg[size]=-1&sort=-created
     + params
         + filter[forum] 必填6,8
@@ -111,10 +126,23 @@
         + sort 必填-created
         + page[number]
         + page[size]
-+ 推荐娱乐新闻 (GET)/mp/topics/anchorRecommends
-    + Description  
-        + page[size]不能小于filter[seedIds]的个数
-+ 推荐行业新闻 (GET)/topics/search?filter[forum]=8&fiter[items.upTimes:gt]=0&agg[size]=-1&sort=-items.upTimes
++ 推荐娱乐新闻 
+    + ~~旧版(GET)/mp/topics/anchorRecommends~~
+        + Description  
+            + page[size]不能小于filter[seedIds]的个数
+    + 20181123版(GET) /mp/topics/featurednews
+        + params
+            + filter[forum] 必填6
+            + page[size] 根据需求填写
+            + fromDays 必填30
++ 推荐行业新闻 
+    + ~~旧版(GET)/topics/search?filter[forum]=8&fiter[items.upTimes:gt]=0&agg[size]=-1&sort=-items.upTimes~~
+    + 20181123版版(GET) /mp/topics/featurednews
+        + params
+            + filter[forum] 必填8
+            + page[size] 根据需求填写
+            + fromDays 必填30
+
 
 
 ## 技术支持模块
