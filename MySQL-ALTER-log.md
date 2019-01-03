@@ -3,6 +3,43 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 
+### 2018年1月3日
+> article nlp相关
+```sql
+ALTER TABLE `posts_text`
+ADD COLUMN `key_words`  varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '算法提取的关键词' AFTER `content`;
+
+CREATE TABLE `nlp_event` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT 'nlp事件名称',
+  `last_time` datetime NOT NULL,
+  `last_id` bigint(20) unsigned NOT NULL,
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `topic_similar` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `topic_id` bigint(20) unsigned NOT NULL,
+  `target_id` bigint(20) unsigned NOT NULL,
+  `modified` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `topic_target_unique_idx` (`topic_id`,`target_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE `posts`
+ADD COLUMN `is_repeat`  tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否重复，0/1:否/是' AFTER `language`;
+
+ALTER TABLE `topics`
+ADD COLUMN `is_repeat`  tinyint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否重复，0/1:否/是' AFTER `moderated`;
+
+```
+
 ### 2018年11月20日
 > wxrank.seeds 添加forum_id字段
 ```sql
