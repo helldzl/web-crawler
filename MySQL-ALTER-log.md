@@ -3,7 +3,27 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 
-### 2018年1月3日
+### 2019年3月24日
+> article 新建表
+```sql
+CREATE TABLE `rec_recommended` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `ssid` char(36) CHARACTER SET utf8 NOT NULL COMMENT 'session id',
+  `article_id` bigint(20) unsigned NOT NULL COMMENT '文章标识',
+  `has_shown` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否已展示过，0-否，1-是，默认0',
+  `has_viewed` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否浏览过，0-否，1-是，默认0',
+  `weight` decimal(10,5) unsigned NOT NULL DEFAULT '0.00000' COMMENT '权重',
+  `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL COMMENT '创建时间',
+  `modified` datetime NOT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `ssid_key` (`ssid`),
+  KEY `userid_key` (`user_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='推荐列表';
+
+```
+
+### 2019年1月3日
 > article nlp相关
 ```sql
 ALTER TABLE `posts_text`
