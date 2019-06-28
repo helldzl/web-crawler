@@ -3,6 +3,27 @@
 ![米饭星](http://cdn.mifanxing.com/mifan/img/favicon.ico)
 # 2.4.0
 
+### 2019年06月28日
+> article,创建article_classification
+```sql
+CREATE TABLE `article_classification` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `article_id` bigint(20) unsigned NOT NULL COMMENT '文章id',
+  `dimension` tinyint(3) unsigned NOT NULL COMMENT '分类维度，0：是否行业相关，1：文章功能，2：专业领域',
+  `classification_id` bigint(20) unsigned NOT NULL COMMENT '分类标识',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `creator` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `modifier` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='文章-类别表（与topics_classifacation类似，但不是同一种分类算法得到的结果）';
+
+ALTER TABLE `classification`
+ADD COLUMN `dimension`  tinyint(3) unsigned NOT NULL COMMENT '分类维度，0：是否行业相关，1：文章功能，2：专业领域' AFTER  `id`;
+ADD COLUMN `leaf` tinyint(3) unsigned NOT NULL COMMENT '是否叶子节点，0/1：否：是' AFTER `classification_name`  
+```
+
 ### 2019年3月24日
 > article 新建表
 ```sql
